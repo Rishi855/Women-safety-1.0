@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/location"
+        android:title="@string/location"
+        android:icon="@drawable/ic_location_foreground"/>
+    <item
+        android:id="@+id/emergencyContacts"
+        android:title="@string/contacts"
+        android:icon="@drawable/ic_emergency_contact_foreground"/>
+    <item
+        android:id="@+id/sosAlert"
+        android:title="@string/sos"
+        android:icon="@drawable/ic_sos_alert_foreground"/>
+    <item
+        android:id="@+id/setting"
+        android:title="@string/setting"
+        android:icon="@drawable/ic_setting_foreground"/>
+    <item
+        android:id="@+id/help"
+        android:title="@string/information"
+        android:icon="@drawable/ic_help_foreground"/>
+</menu>
