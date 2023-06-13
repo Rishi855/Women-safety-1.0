@@ -93,9 +93,12 @@ public class SosFragment extends Fragment {
                     @Override
                     public void run() {
                         SmsManager smsManager = SmsManager.getDefault();
-                        if(lat.length()!=0)
+                        SharedPreferences sh = getActivity().getSharedPreferences("MySharedPref", MODE_PRIVATE);
+                        String tempLat = sh.getString("lat","");
+                        String tempLon = sh.getString("lon","");
+                        if(tempLat.length()!=0)
                         {
-                            smsManager.sendTextMessage("9022739688", null, "https://maps.google.com/?q="+lat+","+lon, null, null);
+                            smsManager.sendTextMessage("9022739688", null, "https://maps.google.com/?q="+tempLat+","+tempLon, null, null);
                             Toast.makeText(getActivity(), "Message sent : "+lon+" "+lat, Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -149,6 +152,11 @@ public class SosFragment extends Fragment {
                     } else {
                         lat = location.getLatitude()+"";
                         lon = location.getLongitude()+"";
+                        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MySharedPref", MODE_PRIVATE);
+                        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+                        myEdit.putString("lat",lat);
+                        myEdit.putString("lon",lon);
+                        myEdit.apply();
 //                        Toast.makeText(getActivity(), ""+lat+" "+lon, Toast.LENGTH_SHORT).show();
 
                     }
