@@ -11,6 +11,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.hardware.SensorManager;
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -28,6 +29,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -48,6 +50,10 @@ public class SettingFragment extends Fragment {
     private static final int MY_PERMISSIONS_REQUEST_LOCATION=2;
     public String lat = "";
     public String lon = "";
+//    public String[] PERMISSIONS = new String[]{
+//            Manifest.permission.SEND_SMS,
+//            Manifest.permission.CALL_PHONE,
+//            Manifest.permission.ACCESS_FINE_LOCATION};
     FusedLocationProviderClient mFusedLocationClient;
 
 //    SharedPreferences sharedPreferences ;
@@ -73,6 +79,7 @@ public class SettingFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_setting, container, false);
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
         Button btnSosSetting = view.findViewById(R.id.btnSosSetting);
+
         btnSosSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,14 +96,15 @@ public class SettingFragment extends Fragment {
         });
 
         //SMS PERMISSION
-        Button psms = view.findViewById(R.id.psms);
+        ImageButton psms = view.findViewById(R.id.psms);
         psms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int check_permission = ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.SEND_SMS);
 
                 if(check_permission == PackageManager.PERMISSION_GRANTED){
-
+                    psms.setImageResource(R.drawable.ic_done_foreground);
+                    psms.setBackground(getActivity().getDrawable(R.drawable.bg_done));
                 }
                 else{
                     ActivityCompat.requestPermissions(getActivity(), new String[] {Manifest.permission.SEND_SMS},MY_PERMISSIONS_REQUEST_SEND_SMS );
@@ -105,14 +113,15 @@ public class SettingFragment extends Fragment {
 
         });
         //CALL PERMISSION
-        Button pcall = view.findViewById(R.id.pcall);
+        ImageButton pcall = view.findViewById(R.id.pcall);
         pcall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int check_permission = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE);
 
                 if(check_permission == PackageManager.PERMISSION_GRANTED){
-
+                    pcall.setImageResource(R.drawable.ic_done_foreground);
+                    pcall.setBackground(getActivity().getDrawable(R.drawable.bg_done));
                 }
                 else{
                     ActivityCompat.requestPermissions(getActivity(), new String[] {Manifest.permission.CALL_PHONE},MY_PERMISSIONS_REQUEST_AUTO_CALL );
@@ -121,14 +130,15 @@ public class SettingFragment extends Fragment {
 
         });
         //LOCATION PERMISSION
-        Button plocation = view.findViewById(R.id.plocation);
+        ImageButton plocation = view.findViewById(R.id.plocation);
         plocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int check_permission = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION);
 
                 if(check_permission == PackageManager.PERMISSION_GRANTED){
-
+                    plocation.setImageResource(R.drawable.ic_done_foreground);
+                    plocation.setBackground(getActivity().getDrawable(R.drawable.bg_done));
                 }
                 else{
                     ActivityCompat.requestPermissions(getActivity(), new String[] {Manifest.permission.ACCESS_FINE_LOCATION},MY_PERMISSIONS_REQUEST_LOCATION );
@@ -137,6 +147,23 @@ public class SettingFragment extends Fragment {
 
         });
 
+        int check_permission1 = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION);
+        if(check_permission1 == PackageManager.PERMISSION_GRANTED){
+            plocation.setImageResource(R.drawable.ic_done_foreground);
+            plocation.setBackground(getActivity().getDrawable(R.drawable.bg_done));
+        }
+        int check_permission2 = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE);
+
+        if(check_permission2 == PackageManager.PERMISSION_GRANTED){
+            pcall.setImageResource(R.drawable.ic_done_foreground);
+            pcall.setBackground(getActivity().getDrawable(R.drawable.bg_done));
+        }
+        int check_permission3 = ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.SEND_SMS);
+
+        if(check_permission3 == PackageManager.PERMISSION_GRANTED){
+            psms.setImageResource(R.drawable.ic_done_foreground);
+            psms.setBackground(getActivity().getDrawable(R.drawable.bg_done));
+        }
         return view;
     }
 
@@ -244,11 +271,11 @@ public class SettingFragment extends Fragment {
         now = true;
         if(!foregroundServiceRunning())
         {
-            Toast.makeText(getActivity(), "1: "+now, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getActivity(), "1: "+now, Toast.LENGTH_SHORT).show();
             getActivity().startService(new Intent(getActivity(),MyService.class));
         }
         else {
-            Toast.makeText(getActivity(), "1: "+now, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getActivity(), "1: "+now, Toast.LENGTH_SHORT).show();
             getActivity().stopService(new Intent(getActivity(), MyService.class));
             getActivity().startService(new Intent(getActivity(),MyService.class));
         }
@@ -267,7 +294,13 @@ public class SettingFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
+//        for(String permission : PERMISSIONS)
+//        {
+//            if(ActivityCompat.checkSelfPermission(getActivity(),permission)==PackageManager.PERMISSION_GRANTED)
+//            {
+//                return;
+//            }
+//        }
     }
     @Override
     public void onPause() {

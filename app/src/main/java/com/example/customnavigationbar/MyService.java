@@ -61,6 +61,7 @@ public class MyService extends Service {
     private float mAccelCurrent;
     public String lat = "";
     public String lon = "";
+    public String dial = "";
     private static final int MY_PERMISSIONS_REQUEST_LOCATION=2;
     FusedLocationProviderClient mFusedLocationClient;
     int addLevel;
@@ -86,7 +87,7 @@ public class MyService extends Service {
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.SEND_SMS)
                 != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(this, "NOOOOOOOO", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "NOOOOOOOO", Toast.LENGTH_SHORT).show();
         } else {
             getLastLocation();
             final Handler handler = new Handler();
@@ -99,7 +100,7 @@ public class MyService extends Service {
                     String tempLon = sh.getString("lon","");
                     if(tempLat.length()!=0)
                     {
-                        smsManager.sendTextMessage("9022739688", null, "https://maps.google.com/?q="+tempLat+","+tempLon, null, null);
+                        smsManager.sendTextMessage(dial, null, "https://maps.google.com/?q="+tempLat+","+tempLon, null, null);
                         Toast.makeText(MyService.this, "Message sent : "+lon+" "+lat, Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -121,7 +122,13 @@ public class MyService extends Service {
 //        Toast.makeText(this, ""+level, Toast.LENGTH_SHORT).show();
         SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
         String level = sh.getString("level", "level-1");
-        Toast.makeText(this, "Service: " + level, Toast.LENGTH_SHORT).show();
+        dial = sh.getString("emergencyContact","");
+        if(dial.equals(""))
+        {
+            Toast.makeText(this, "Please select emergency number" , Toast.LENGTH_SHORT).show();
+            return START_STICKY;
+        }
+//        Toast.makeText(this, "Service: " + level, Toast.LENGTH_SHORT).show();
         addLevel = 0;
         switch (level) {
             case "Level-1":
@@ -162,7 +169,7 @@ public class MyService extends Service {
 
                 if (mAccel > temp) {
                     Toast.makeText(getApplicationContext(), "Shake event detected by services" + " and " + temp, Toast.LENGTH_SHORT).show();
-                    Toast.makeText(MyService.this, "Message sent by service" + mAccel, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(MyService.this, "Message sent by service" + mAccel, Toast.LENGTH_SHORT).show();
                     sendSMSMessage();
 
 //                    makePhoneCall();
@@ -214,7 +221,7 @@ public class MyService extends Service {
 //                    .addAction(R.drawable.ic_launcher_foreground,"Stop",pendingIntent);
 //            notification.notify(0,mb);
             startForeground(1001, notification.build());
-            Toast.makeText(this, "Notification could be create", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Notification could be create", Toast.LENGTH_SHORT).show();
 
 
 //            NotificationCompat.Builder builder = new NotificationCompat.Builder()

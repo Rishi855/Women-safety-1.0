@@ -3,12 +3,765 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HelpFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Help" />
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/bg_all">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            tools:src="@tools:sample/avatars" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="8dp"
+            android:padding="16dp"
+            app:cardCornerRadius="77dp"
+            android:paddingBottom="2dp"
+            app:cardBackgroundColor="#D81B60">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="5dp"
+                android:gravity="center">
+
+                <!--                <ImageButton-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="0dp"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    android:src="@drawable/women"-->
+                <!--                    android:contentDescription="app icon"-->
+                <!--                    android:background="@null"-->
+                <!--                    android:id="@+id/imageButton0"-->
+                <!--                    android:padding="5dp"-->
+                <!--                    app:layout_constraintStart_toStartOf="parent"-->
+                <!--                    android:layout_marginBottom="0dp"-->
+                <!--                    app:layout_constraintTop_toTopOf="parent"-->
+                <!--                    app:layout_constraintBottom_toTopOf="@+id/textView" />-->
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_marginTop="0dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SafeStree"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:textAlignment="center" />
+
+            </LinearLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!--        <Space-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="186dp" />-->
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="551dp"
+                android:orientation="vertical">
+
+                <!--            <ScrollView-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="match_parent"-->
+                <!--                android:contentDescription="Information">-->
+
+                <!--                -->
+                <!--            </ScrollView>-->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginVertical="8dp"
+                    android:padding="16dp"
+                    android:id="@+id/defaultCardView"
+                    app:cardCornerRadius="8dp"
+                    app:cardBackgroundColor="#4CAF50">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:id="@+id/linearLayoutDefault"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:id="@+id/imageButton1"
+                                    android:layout_width="64dp"
+                                    android:layout_height="64dp"
+                                    android:background="@null"
+                                    android:contentDescription="default number"
+                                    android:scaleType="fitCenter"
+                                    android:src="@drawable/ic_default_number_icon_foreground"/>
+
+                                <TextView
+                                    android:id="@+id/textView1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginStart="16dp"
+                                    android:text="Your Default Number"
+                                    android:textColor="#000000"
+                                    android:textStyle="bold" />
+                                <Space
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1" />
+                                <ImageView
+                                    android:id="@+id/defaultArrow"
+                                    android:layout_width="64dp"
+                                    android:layout_height="64dp"
+                                    android:background="@null"
+                                    android:contentDescription="default number"
+                                    android:scaleType="fitCenter"
+                                    android:src="@drawable/ic_to_bottom_foreground" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/defaultInfo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="16dp"
+                                android:layout_marginVertical="8dp"
+                                android:background="@drawable/bg_info_text"
+                                android:padding="16dp"
+                                android:visibility="gone"
+                                app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+                                app:layout_constraintStart_toStartOf="@id/linearLayout"
+                                app:layout_constraintTop_toBottomOf="parent">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="By using default number system will sent location to that number.You can set default number by clicking numbers from contact list"
+                                    android:textColor="@color/black" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <!-- Second Card -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginVertical="8dp"
+                    android:padding="16dp"
+                    app:cardBackgroundColor="#E3FF47"
+                    app:cardCornerRadius="8dp"
+                    android:id="@+id/callPoliceCardView">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:id="@+id/linearLayoutPolice"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+
+                                <ImageView
+                                    android:layout_width="64dp"
+                                    android:layout_height="64dp"
+                                    android:src="@drawable/ic_police_icon_foreground"
+                                    android:background="@null"
+                                    android:id="@+id/imageButton2"
+                                    android:contentDescription="police"
+                                    android:scaleType="fitCenter"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Call Nearby Police Station"
+                                    android:textColor="#000000"
+                                    android:textStyle="bold"
+                                    android:layout_gravity="center"
+                                    android:id="@+id/textView2"
+                                    app:layout_constraintStart_toEndOf="@+id/imageButton2"
+                                    app:layout_constraintTop_toTopOf="@+id/imageButton2"
+                                    app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
+                                    android:layout_marginStart="16dp" />
+                                <Space
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1" />
+                                <ImageView
+                                    android:id="@+id/policeArrow"
+                                    android:layout_width="64dp"
+                                    android:layout_height="64dp"
+                                    android:background="@null"
+                                    android:contentDescription="default number"
+                                    android:scaleType="fitCenter"
+                                    android:src="@drawable/ic_to_bottom_foreground" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/policeInfo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="16dp"
+                                android:layout_marginVertical="8dp"
+                                android:background="@drawable/bg_info_text"
+                                android:padding="16dp"
+                                android:visibility="gone"
+                                app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+                                app:layout_constraintStart_toStartOf="@id/linearLayout"
+                                app:layout_constraintTop_toBottomOf="parent">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="By using default number you can"
+                                    android:textColor="@color/black" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Third Card -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:padding="16dp"
+                    app:cardBackgroundColor="#2196F3"
+                    app:cardCornerRadius="8dp"
+                    android:id="@+id/callHospitalCardView">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:id="@+id/linearLayoutHospital"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+
+                                <ImageView
+                                    android:layout_width="64dp"
+                                    android:layout_height="64dp"
+                                    android:src="@drawable/ic_ambulance_icon_foreground"
+                                    android:background="@null"
+                                    android:scaleType="fitCenter"
+                                    android:contentDescription="ambulance"
+                                    android:id="@+id/imageButton3"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Call Nearby Hospital"
+                                    android:layout_gravity="center"
+                                    android:textColor="#000000"
+                                    android:textStyle="bold"
+                                    android:id="@+id/textView3"
+                                    app:layout_constraintStart_toEndOf="@+id/imageButton3"
+                                    app:layout_constraintTop_toTopOf="@+id/imageButton3"
+                                    app:layout_constraintBottom_toBottomOf="@+id/imageButton3"
+                                    android:layout_marginStart="16dp" />
+                                <Space
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1" />
+                                <ImageView
+                                    android:id="@+id/hospitalArrow"
+                                    android:layout_width="64dp"
+                                    android:layout_height="64dp"
+                                    android:background="@null"
+                                    android:contentDescription="default number"
+                                    android:scaleType="fitCenter"
+                                    android:src="@drawable/ic_to_bottom_foreground" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/hospitalInfo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="16dp"
+                                android:layout_marginVertical="8dp"
+                                android:background="@drawable/bg_info_text"
+                                android:padding="16dp"
+                                android:visibility="gone"
+                                app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+                                app:layout_constraintStart_toStartOf="@id/linearLayout"
+                                app:layout_constraintTop_toBottomOf="parent">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="By using default number you can"
+                                    android:textColor="@color/black" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginVertical="8dp"
+                    android:padding="16dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardBackgroundColor="#827FEA"
+                    android:id="@+id/shakeCardView">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:id="@+id/linearLayoutShake"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="64dp"
+                                    android:layout_height="64dp"
+                                    android:src="@drawable/ic_shake_icon_foreground"
+                                    android:scaleType="fitCenter"
+                                    android:background="@null"
+                                    android:contentDescription="shake"
+                                    android:id="@+id/imageButton4"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Shake to make call"
+                                    android:textColor="#000000"
+                                    android:layout_gravity="center"
+                                    android:textStyle="bold"
+                                    android:id="@+id/textView4"
+                                    app:layout_constraintStart_toEndOf="@+id/imageButton4"
+                                    app:layout_constraintTop_toTopOf="@+id/imageButton4"
+                                    app:layout_constraintBottom_toBottomOf="@+id/imageButton4"
+                                    android:layout_marginStart="16dp" />
+                                <Space
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1" />
+                                <ImageView
+                                    android:id="@+id/shakeArrow"
+                                    android:layout_width="64dp"
+                                    android:layout_height="64dp"
+                                    android:background="@null"
+                                    android:contentDescription="default number"
+                                    android:scaleType="fitCenter"
+                                    android:src="@drawable/ic_to_bottom_foreground" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/shakeInfo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="16dp"
+                                android:layout_marginVertical="8dp"
+                                android:background="@drawable/bg_info_text"
+                                android:padding="16dp"
+                                android:visibility="gone"
+                                app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+                                app:layout_constraintStart_toStartOf="@id/linearLayout"
+                                app:layout_constraintTop_toBottomOf="parent">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="By using default number you can"
+                                    android:textColor="@color/black" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginVertical="8dp"
+                    android:padding="16dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardBackgroundColor="#F39A9A"
+                    android:id="@+id/sosCardView">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:id="@+id/linearLayoutSos"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+
+                                <ImageView
+                                    android:layout_width="64dp"
+                                    android:layout_height="64dp"
+                                    android:src="@drawable/ic_sos_alert_foreground"
+                                    android:scaleType="fitCenter"
+                                    android:background="@null"
+                                    android:contentDescription="shake"
+                                    android:id="@+id/imageButton5"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="About SOS button"
+                                    android:textColor="#000000"
+                                    android:gravity="center"
+                                    android:textStyle="bold"
+                                    android:layout_gravity="center"
+                                    android:id="@+id/textView5"
+                                    app:layout_constraintStart_toEndOf="@+id/imageButton5"
+                                    app:layout_constraintTop_toTopOf="@+id/imageButton5"
+                                    app:layout_constraintBottom_toBottomOf="@+id/imageButton5"
+                                    android:layout_marginStart="16dp" />
+
+                                <Space
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1" />
+                                <ImageView
+                                    android:id="@+id/sosArrow"
+                                    android:layout_width="64dp"
+                                    android:layout_height="64dp"
+                                    android:background="@null"
+                                    android:contentDescription="default number"
+                                    android:scaleType="fitCenter"
+                                    android:src="@drawable/ic_to_bottom_foreground" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/sosInfo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="16dp"
+                                android:layout_marginVertical="8dp"
+                                android:background="@drawable/bg_info_text"
+                                android:padding="16dp"
+                                android:visibility="gone"
+                                app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+                                app:layout_constraintStart_toStartOf="@id/linearLayout"
+                                app:layout_constraintTop_toBottomOf="parent">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="By using default number you can"
+                                    android:textColor="@color/black" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
 
 </FrameLayout>
+
+
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    tools:context=".HelpFragment">-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="vertical"-->
+<!--        android:gravity="center">-->
+<!--        <com.google.android.material.card.MaterialCardView-->
+<!--            android:layout_width="140dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginHorizontal="16dp"-->
+<!--            android:layout_marginVertical="8dp"-->
+<!--            android:padding="16dp"-->
+<!--            app:cardCornerRadius="77dp"-->
+<!--            android:paddingBottom="2dp"-->
+<!--            app:cardBackgroundColor="#D81B60">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:orientation="vertical"-->
+<!--                android:padding="5dp"-->
+<!--                android:gravity="center">-->
+
+<!--&lt;!&ndash;                <ImageButton&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height="0dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_weight="1"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:src="@drawable/women"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:contentDescription="app icon"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:background="@null"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:id="@+id/imageButton0"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:padding="5dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_marginBottom="0dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    app:layout_constraintTop_toTopOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                    app:layout_constraintBottom_toTopOf="@+id/textView" />&ndash;&gt;-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textView"-->
+<!--                    android:layout_marginTop="0dp"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="SafeStree"-->
+<!--                    android:gravity="center"-->
+<!--                    android:textColor="#000000"-->
+<!--                    android:textSize="16sp"-->
+<!--                    android:textAlignment="center" />-->
+
+<!--            </LinearLayout>-->
+
+<!--        </com.google.android.material.card.MaterialCardView>-->
+
+
+<!--        &lt;!&ndash; First Card &ndash;&gt;-->
+<!--        <com.google.android.material.card.MaterialCardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginHorizontal="16dp"-->
+<!--            android:layout_marginVertical="8dp"-->
+<!--            android:padding="16dp"-->
+<!--            app:cardCornerRadius="8dp"-->
+<!--            app:cardBackgroundColor="#4CAF50">-->
+
+<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <ImageButton-->
+<!--                    android:layout_width="64dp"-->
+<!--                    android:layout_height="64dp"-->
+<!--                    android:src="@drawable/ic_default_number_icon_foreground"-->
+<!--                    android:background="@null"-->
+<!--                    android:scaleType="fitCenter"-->
+<!--                    android:contentDescription="default number"-->
+<!--                    android:id="@+id/imageButton1"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Your Default Number"-->
+<!--                    android:textColor="#000000"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:id="@+id/textView1"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/imageButton1"-->
+<!--                    app:layout_constraintTop_toTopOf="@+id/imageButton1"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@+id/imageButton1"-->
+<!--                    android:layout_marginStart="16dp" />-->
+
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--        </com.google.android.material.card.MaterialCardView>-->
+
+<!--        &lt;!&ndash; Second Card &ndash;&gt;-->
+<!--        <com.google.android.material.card.MaterialCardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginHorizontal="16dp"-->
+<!--            android:layout_marginVertical="8dp"-->
+<!--            android:padding="16dp"-->
+<!--            app:cardBackgroundColor="#E3FF47"-->
+<!--            app:cardCornerRadius="8dp">-->
+
+<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <ImageButton-->
+<!--                    android:layout_width="64dp"-->
+<!--                    android:layout_height="64dp"-->
+<!--                    android:src="@drawable/ic_police_icon_foreground"-->
+<!--                    android:background="@null"-->
+<!--                    android:id="@+id/imageButton2"-->
+<!--                    android:contentDescription="police"-->
+<!--                    android:scaleType="fitCenter"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Call Nearby Police Station"-->
+<!--                    android:textColor="#000000"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:id="@+id/textView2"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/imageButton2"-->
+<!--                    app:layout_constraintTop_toTopOf="@+id/imageButton2"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@+id/imageButton2"-->
+<!--                    android:layout_marginStart="16dp" />-->
+
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--        </com.google.android.material.card.MaterialCardView>-->
+
+<!--        &lt;!&ndash; Third Card &ndash;&gt;-->
+<!--        <com.google.android.material.card.MaterialCardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginHorizontal="16dp"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:layout_marginBottom="16dp"-->
+<!--            android:padding="16dp"-->
+<!--            app:cardBackgroundColor="#2196F3"-->
+<!--            app:cardCornerRadius="8dp">-->
+
+<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <ImageButton-->
+<!--                    android:layout_width="64dp"-->
+<!--                    android:layout_height="64dp"-->
+<!--                    android:src="@drawable/ic_ambulance_icon_foreground"-->
+<!--                    android:background="@null"-->
+<!--                    android:scaleType="fitCenter"-->
+<!--                    android:contentDescription="ambulance"-->
+<!--                    android:id="@+id/imageButton3"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Call Nearby Hospital"-->
+<!--                    android:textColor="#000000"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:id="@+id/textView3"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/imageButton3"-->
+<!--                    app:layout_constraintTop_toTopOf="@+id/imageButton3"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@+id/imageButton3"-->
+<!--                    android:layout_marginStart="16dp" />-->
+
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--        </com.google.android.material.card.MaterialCardView>-->
+<!--        <com.google.android.material.card.MaterialCardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginHorizontal="16dp"-->
+<!--            android:layout_marginVertical="8dp"-->
+<!--            android:padding="16dp"-->
+<!--            app:cardCornerRadius="8dp"-->
+<!--            app:cardBackgroundColor="#827FEA">-->
+
+<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <ImageButton-->
+<!--                    android:layout_width="64dp"-->
+<!--                    android:layout_height="64dp"-->
+<!--                    android:src="@drawable/ic_shake_icon_foreground"-->
+<!--                    android:scaleType="fitCenter"-->
+<!--                    android:background="@null"-->
+<!--                    android:contentDescription="shake"-->
+<!--                    android:id="@+id/imageButton4"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Shake to make call"-->
+<!--                    android:textColor="#000000"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:id="@+id/textView4"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/imageButton4"-->
+<!--                    app:layout_constraintTop_toTopOf="@+id/imageButton4"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@+id/imageButton4"-->
+<!--                    android:layout_marginStart="16dp" />-->
+
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--        </com.google.android.material.card.MaterialCardView>-->
+
+<!--    </LinearLayout>-->
+
+<!--</FrameLayout>-->

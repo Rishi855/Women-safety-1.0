@@ -8,13 +8,19 @@
         android:id="@+id/emergencyContacts"
         android:title="@string/contacts"
         android:icon="@drawable/ic_emergency_contact_foreground"/>
+<!--    <item-->
+<!--        android:id="@+id/sosAlert"-->
+<!--        android:title="@string/sos"-->
+<!--        android:icon="@drawable/ic_sos_alert_foreground" />-->
     <item
-        android:id="@+id/sosAlert"
-        android:title="@string/sos"
-        android:icon="@drawable/ic_sos_alert_foreground"/>
+        android:id="@+id/sosAlertFab"
+        android:title=""
+        android:enabled="false"/>
+
     <item
         android:id="@+id/setting"
         android:title="@string/setting"
+        android:checked="true"
         android:icon="@drawable/ic_setting_foreground"/>
     <item
         android:id="@+id/help"

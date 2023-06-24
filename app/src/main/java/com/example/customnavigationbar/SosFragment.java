@@ -54,6 +54,7 @@ public class SosFragment extends Fragment {
     public SosFragment() {
         // Required empty public constructor
     }
+    public String dial;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -62,9 +63,13 @@ public class SosFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_sos, container, false);
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
 //        getLastLocation();
-        SharedPreferences sh = getActivity().getSharedPreferences("MySharedPref", MODE_PRIVATE);
+        SharedPreferences sh = getActivity().getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
 //        String s1 = sh.getString("name", "");
 //        int a = sh.getInt("age", 0);
+//        SharedPreferences pSharedPref = getContext().getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
+
+        dial = sh.getString("emergencyContact", "");
+//        Toast.makeText(getActivity(), ""+dial, Toast.LENGTH_SHORT).show();
         sosCall = sh.getBoolean("sosCall",false);
         sosMessage = sh.getBoolean("sosMessage",false);
         shakeMessage = sh.getBoolean("shakeMessage",false);
@@ -72,8 +77,8 @@ public class SosFragment extends Fragment {
         {
             int check_permission_call = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE);
             if(check_permission_call == PackageManager.PERMISSION_GRANTED){
-                String dial = "tel:" + "9022739688";
-                startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
+                String dialCall = "tel:" + dial;
+                startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dialCall)));
                 Toast.makeText(getActivity(), "Call sent", Toast.LENGTH_SHORT).show();
             }
             else{FragmentManager fragmentManager = getParentFragmentManager();
@@ -98,7 +103,7 @@ public class SosFragment extends Fragment {
                         String tempLon = sh.getString("lon","");
                         if(tempLat.length()!=0)
                         {
-                            smsManager.sendTextMessage("9022739688", null, "https://maps.google.com/?q="+tempLat+","+tempLon, null, null);
+                            smsManager.sendTextMessage(dial, null, "https://maps.google.com/?q="+tempLat+","+tempLon, null, null);
                             Toast.makeText(getActivity(), "Message sent : "+lon+" "+lat, Toast.LENGTH_SHORT).show();
                         }
                     }
