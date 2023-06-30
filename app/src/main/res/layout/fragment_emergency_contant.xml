@@ -87,7 +87,7 @@
                     android:layout_height="90dp"
                     android:background="@null"
                     android:contentDescription="ambulance_icon"
-                    app:srcCompat="@drawable/ic_ambulance_icon_foreground" />
+                    app:srcCompat="@drawable/ic_ambulance_icon_foreground"/>
 
                 <TextView
                     android:id="@+id/textView3"

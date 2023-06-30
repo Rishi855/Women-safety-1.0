@@ -24,6 +24,7 @@ import android.os.Looper;
 import android.provider.Settings;
 import android.telephony.SmsManager;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
@@ -56,7 +57,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+//        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        try {
+            binding = ActivityMainBinding.inflate(getLayoutInflater());
+            // ... rest of body of onCreateView() ...
+        } catch (Exception e) {
+            Log.e("TAGG", "HERE YOU HAVE TO CHANGE"+e, e);
+            throw e;
+        }
         setContentView(binding.getRoot());
 
         replaceFragment(new SettingFragment());
@@ -102,12 +110,6 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dialCall)));
                         Toast.makeText(MainActivity.this, "Call sent", Toast.LENGTH_SHORT).show();
                     }
-//                    else{
-//                        FragmentManager fragmentManager = getParentFragmentManager();
-//                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                        fragmentTransaction.replace(R.id.flFragment,new SettingFragment());
-//                        fragmentTransaction.commit();
-//                    }
                 }
 
                 if(sosMessage && !dial.equals(""))
@@ -132,10 +134,6 @@ public class MainActivity extends AppCompatActivity {
                         }, 5000);
 
                     }
-//                    else{FragmentManager fragmentManager = getParentFragmentManager();
-//                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                        fragmentTransaction.replace(R.id.flFragment,new SettingFragment());
-//                        fragmentTransaction.commit();
 //                    }
                 }
             }

@@ -9,7 +9,7 @@
     <FrameLayout
         android:id="@+id/flFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"/>
 
 <!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
 <!--        android:id="@+id/bottomNavigationView"-->
@@ -31,8 +31,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
+        style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
         app:fabCradleMargin="10dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:theme="@style/Theme.CustomNavigationBar"
         app:fabCradleRoundedCornerRadius="50dp"
         android:layout_gravity="bottom"
         app:fabAlignmentMode="center"
@@ -59,9 +60,9 @@
         android:src="@drawable/ic_sos_alert_foreground"
         app:layout_anchor="@id/bottomAppBar"
         app:maxImageSize="40dp"
+        android:theme="@style/Theme.CustomNavigationBar"
         android:tint="@color/material_dynamic_tertiary20"
         app:fabSize="normal"
         android:contentDescription="sos"/>
-        <!--    </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
