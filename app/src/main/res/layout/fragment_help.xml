@@ -16,8 +16,11 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            tools:src="@tools:sample/avatars" />
+            android:layout_height="160dp"
+            android:layout_margin="5dp"
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
+            android:src="@drawable/bg_app_icon_1" />
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="140dp"
@@ -158,7 +161,7 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="By using default number system will sent location to that number.You can set default number by clicking numbers from contact list"
+                                    android:text="By using default number system will sent locationYour default number for sos has been set as number and you can change it by tapping the contact in contact tab"
                                     android:textColor="@color/black" />
                             </LinearLayout>
                         </LinearLayout>
@@ -247,7 +250,7 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="By using default number you can"
+                                    android:text="You can call nearby police station by just tapping on the police station contact card in contact tab"
                                     android:textColor="@color/black" />
                             </LinearLayout>
                         </LinearLayout>
@@ -337,7 +340,7 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="By using default number you can"
+                                    android:text="You can call nearby hospital by just tapping on the hospital contact card in contact tab"
                                     android:textColor="@color/black" />
                             </LinearLayout>
                         </LinearLayout>
@@ -422,7 +425,8 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="By using default number you can"
+                                    android:text="Safestree allows to make an emergency call just by shaking the phone even though your app is cleared from recents.
+You can change the settings for same in settings tab"
                                     android:textColor="@color/black" />
                             </LinearLayout>
                         </LinearLayout>
@@ -513,7 +517,7 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="By using default number you can"
+                                    android:text="You can trigger an sos call and SMS by just clicking the sos button that will send the current location and an alert message to your default emergency contact"
                                     android:textColor="@color/black" />
                             </LinearLayout>
                         </LinearLayout>

@@ -1,7 +1,10 @@
 package com.example.customnavigationbar;
 
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -22,6 +25,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -306,6 +310,30 @@ public class EmergencyContantFragment extends Fragment {
 //                }
 //                else Toast.makeText(MainActivity.this, "You can add maximum 3 contacts", Toast.LENGTH_SHORT).show();
                 return true;
+            }
+        });
+        ImageButton btnPolice = view.findViewById(R.id.btnPolice);
+        ImageButton btnHospital = view.findViewById(R.id.btnAmbulance);
+        btnPolice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int check_permission_call = ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.CALL_PHONE);
+                if(check_permission_call == PackageManager.PERMISSION_GRANTED){
+                    String dialCall = "tel:" + 100;
+                    startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dialCall)));
+//                    Toast.makeText(MainActivity.this, "Call sent", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        btnHospital.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int check_permission_call = ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.CALL_PHONE);
+                if(check_permission_call == PackageManager.PERMISSION_GRANTED){
+                    String dialCall = "tel:" + 102;
+                    startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dialCall)));
+                    Toast.makeText(getActivity(), "Call sent", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         return view;

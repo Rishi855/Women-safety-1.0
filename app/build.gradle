@@ -1,7 +1,6 @@
 plugins {
     id 'com.android.application'
 }
-
 android {
     namespace 'com.example.customnavigationbar'
 
@@ -29,6 +28,8 @@ android {
     }
     buildFeatures {
         viewBinding true
+
+//        dataBinding true
     }
 }
 
