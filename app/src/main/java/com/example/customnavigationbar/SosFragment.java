@@ -103,7 +103,7 @@ public class SosFragment extends Fragment {
                         String tempLon = sh.getString("lon","");
                         if(tempLat.length()!=0)
                         {
-                            smsManager.sendTextMessage(dial, null, "https://maps.google.com/?q="+tempLat+","+tempLon, null, null);
+                            smsManager.sendTextMessage(dial, null, "Your contact has made an emergency alert and last location was: "+"https://maps.google.com/?q="+tempLat+","+tempLon, null, null);
                             Toast.makeText(getActivity(), "Message sent : "+lon+" "+lat, Toast.LENGTH_SHORT).show();
                         }
                     }

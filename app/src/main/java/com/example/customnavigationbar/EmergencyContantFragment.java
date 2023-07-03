@@ -1,5 +1,7 @@
 package com.example.customnavigationbar;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -7,6 +9,7 @@ import android.os.Bundle;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -203,6 +206,7 @@ public class EmergencyContantFragment extends Fragment {
                 addNewDelete.setVisibility(View.GONE);
                 allVisible=false;
                 action.shrink();
+                Toast.makeText(getActivity(), "Deleted all contact except emergency number", Toast.LENGTH_SHORT).show();
                 SharedPreferences pSharedPref = getActivity().getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
                 pSharedPref.edit().remove("My_map").commit();
                 String a = pSharedPref.getString("emergencyName","");
@@ -301,6 +305,24 @@ public class EmergencyContantFragment extends Fragment {
                                     .apply();
                             refreshData();
                         }
+                        else {
+                            //warning
+                            AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+                            alertDialog.setTitle(Html.fromHtml("<font color='#332E2E'><b>Warning</b></font>"));
+//                            alertDialog.getWindow().setColorMode(R.color.black);
+                            alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_all);
+                            alertDialog.setMessage(Html.fromHtml("<font color='#332E2E'>You can't delete default number.</font>"));
+                            alertDialog.setIcon(R.drawable.baseline_crisis_alert_24);
+
+                            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Toast.makeText(getActivity(), "You clicked on OK", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+                            alertDialog.show();
+                        }
+
                         dialog.dismiss();
 //                        Toast.makeText(getActivity(), "Delete clicked", Toast.LENGTH_SHORT).show();
                     }

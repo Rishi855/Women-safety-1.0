@@ -93,50 +93,50 @@ public class MainActivity extends AppCompatActivity {
             }
             return true;
         });
-//        FloatingActionButton floatingActionButton=findViewById(R.id.sosAlertAction);
-//        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                mFusedLocationClient = LocationServices.getFusedLocationProviderClient(MainActivity.this);
-//                SharedPreferences sh = MainActivity.this.getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
-//                dial = sh.getString("emergencyContact", "");                sosCall = sh.getBoolean("sosCall",false);
-//                sosMessage = sh.getBoolean("sosMessage",false);
-//                shakeMessage = sh.getBoolean("shakeMessage",false);
-//                if(sosCall && !dial.equals(""))
-//                {
-//                    int check_permission_call = ContextCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.CALL_PHONE);
-//                    if(check_permission_call == PackageManager.PERMISSION_GRANTED){
-//                        String dialCall = "tel:" + dial;
-//                        startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dialCall)));
-//                        Toast.makeText(MainActivity.this, "Call sent", Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//
-//                if(sosMessage && !dial.equals(""))
-//                {
-//                    int check_permission_location = ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION);
-//                    if(check_permission_location == PackageManager.PERMISSION_GRANTED){
-//                        getLastLocation();
-//                        final Handler handler = new Handler();
-//                        handler.postDelayed(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                                SmsManager smsManager = SmsManager.getDefault();
-//                                SharedPreferences sh = MainActivity.this.getSharedPreferences("MySharedPref", MODE_PRIVATE);
-//                                String tempLat = sh.getString("lat","");
-//                                String tempLon = sh.getString("lon","");
-//                                if(tempLat.length()!=0)
-//                                {
-//                                    smsManager.sendTextMessage(dial, null, "https://maps.google.com/?q="+tempLat+","+tempLon, null, null);
-//                                    Toast.makeText(MainActivity.this, "Message sent : "+lon+" "+lat, Toast.LENGTH_SHORT).show();
-//                                }
-//                            }
-//                        }, 5000);
-//
-//                    }
-//                }
-//            }
-//        });
+        FloatingActionButton floatingActionButton=findViewById(R.id.sosAlertAction);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mFusedLocationClient = LocationServices.getFusedLocationProviderClient(MainActivity.this);
+                SharedPreferences sh = MainActivity.this.getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
+                dial = sh.getString("emergencyContact", "");                sosCall = sh.getBoolean("sosCall",false);
+                sosMessage = sh.getBoolean("sosMessage",false);
+                shakeMessage = sh.getBoolean("shakeMessage",false);
+                if(sosCall && !dial.equals(""))
+                {
+                    int check_permission_call = ContextCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.CALL_PHONE);
+                    if(check_permission_call == PackageManager.PERMISSION_GRANTED){
+                        String dialCall = "tel:" + dial;
+                        startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dialCall)));
+                        Toast.makeText(MainActivity.this, "Call sent", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                if(sosMessage && !dial.equals(""))
+                {
+                    int check_permission_location = ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION);
+                    if(check_permission_location == PackageManager.PERMISSION_GRANTED){
+                        getLastLocation();
+                        final Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                SmsManager smsManager = SmsManager.getDefault();
+                                SharedPreferences sh = MainActivity.this.getSharedPreferences("MySharedPref", MODE_PRIVATE);
+                                String tempLat = sh.getString("lat","");
+                                String tempLon = sh.getString("lon","");
+                                if(tempLat.length()!=0)
+                                {
+                                    smsManager.sendTextMessage(dial, null, "https://maps.google.com/?q="+tempLat+","+tempLon, null, null);
+                                    Toast.makeText(MainActivity.this, "Message sent : "+lon+" "+lat, Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }, 5000);
+
+                    }
+                }
+            }
+        });
     }
     private void replaceFragment(Fragment fragment)
     {

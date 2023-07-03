@@ -103,7 +103,7 @@ public class SettingFragment extends Fragment {
                 int check_permission = ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.SEND_SMS);
 
                 if(check_permission == PackageManager.PERMISSION_GRANTED){
-                    psms.setImageResource(R.drawable.ic_done_foreground);
+                    psms.setImageResource(R.drawable.baseline_done_24);
                     psms.setBackground(getActivity().getDrawable(R.drawable.bg_done));
                 }
                 else{
@@ -120,7 +120,7 @@ public class SettingFragment extends Fragment {
                 int check_permission = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE);
 
                 if(check_permission == PackageManager.PERMISSION_GRANTED){
-                    pcall.setImageResource(R.drawable.ic_done_foreground);
+                    pcall.setImageResource(R.drawable.baseline_done_24);
                     pcall.setBackground(getActivity().getDrawable(R.drawable.bg_done));
                 }
                 else{
@@ -137,7 +137,7 @@ public class SettingFragment extends Fragment {
                 int check_permission = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION);
 
                 if(check_permission == PackageManager.PERMISSION_GRANTED){
-                    plocation.setImageResource(R.drawable.ic_done_foreground);
+                    plocation.setImageResource(R.drawable.baseline_done_24);
                     plocation.setBackground(getActivity().getDrawable(R.drawable.bg_done));
                 }
                 else{
@@ -149,19 +149,19 @@ public class SettingFragment extends Fragment {
 
         int check_permission1 = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION);
         if(check_permission1 == PackageManager.PERMISSION_GRANTED){
-            plocation.setImageResource(R.drawable.ic_done_foreground);
+            plocation.setImageResource(R.drawable.baseline_done_24);
             plocation.setBackground(getActivity().getDrawable(R.drawable.bg_done));
         }
         int check_permission2 = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE);
 
         if(check_permission2 == PackageManager.PERMISSION_GRANTED){
-            pcall.setImageResource(R.drawable.ic_done_foreground);
+            pcall.setImageResource(R.drawable.baseline_done_24);
             pcall.setBackground(getActivity().getDrawable(R.drawable.bg_done));
         }
         int check_permission3 = ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.SEND_SMS);
 
         if(check_permission3 == PackageManager.PERMISSION_GRANTED){
-            psms.setImageResource(R.drawable.ic_done_foreground);
+            psms.setImageResource(R.drawable.baseline_done_24);
             psms.setBackground(getActivity().getDrawable(R.drawable.bg_done));
         }
         return view;
