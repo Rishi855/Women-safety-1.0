@@ -1,14 +1,18 @@
 package com.example.customnavigationbar;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.provider.ContactsContract;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,7 +56,9 @@ public class EmergencyContantFragment extends Fragment {
     static {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
     }
-
+    private static final int PICK_CONTACT_REQUEST = 1;
+//    private TextView nameTextView;
+//    private TextView phoneNumberTextView;
     View view;
     ArrayList<CustomListView> arrayList;
     TextView addContactText,deleteContactText,actionText;
@@ -144,53 +150,56 @@ public class EmergencyContantFragment extends Fragment {
                 Map<String,String> hashMap = loadMap();
 //                Toast.makeText(MainActivity.this, ""+hashMap.size(), Toast.LENGTH_SHORT).show();
                 if(hashMap.size()<3) {
-                    dialog.setContentView(R.layout.contact_entry);
-                    dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                    dialog.setCancelable(false);
-                    dialog.getWindow().getAttributes().windowAnimations = androidx.appcompat.R.style.Animation_AppCompat_Dialog;
+//                    dialog.setContentView(R.layout.contact_entry);
+//                    dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//                    dialog.setCancelable(false);
+//                    dialog.getWindow().getAttributes().windowAnimations = androidx.appcompat.R.style.Animation_AppCompat_Dialog;
 
-                    EditText textName = dialog.findViewById(R.id.userName);
-                    EditText textNumber = dialog.findViewById(R.id.userNumber);
+//                    EditText textName = dialog.findViewById(R.id.userName);
+//                    EditText textNumber = dialog.findViewById(R.id.userNumber);
+                    pickContact();
+                    numbersArrayAdapter.notifyDataSetChanged();
+//                    String Cname=textName.getText().toString();
+//                    String Cnumber=textNumber.getText().toString();
+//                    Button btnDone = dialog.findViewById(R.id.btnDone);
+//                    Button btnCancel = dialog.findViewById(R.id.btnCancel);
 
-                    Button btnDone = dialog.findViewById(R.id.btnDone);
-                    Button btnCancel = dialog.findViewById(R.id.btnCancel);
+//                    btnDone.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            if(textName.getText().toString().equals(""))
+//                            {
+//                                textName.setError("Please enter a name");
+//                            }
+//                            else if(textNumber.getText().toString().equals("") || textNumber.getText().toString().trim().length()!=10)
+//                            {
+//                                textNumber.setError("Please enter valid number");
+////                                Toast.makeText(getActivity(), ""+textNumber.getText().toString().trim().length(), Toast.LENGTH_SHORT).show();
+//                            }
+//                            else{
+//                                String contactName, contactNumber;
+//                                contactName = textName.getText().toString().trim();
+//                                contactNumber = textNumber.getText().toString().trim();
+//                                saveMap(contactName, contactNumber);
+//                                arrayList.add(new CustomListView(R.drawable.ic_person_foreground, contactName, contactNumber));
+//                                refreshData();
+//                                numbersArrayAdapter.notifyDataSetChanged();
+//                                dialog.dismiss();
+//                            }
+////                            Toast.makeText(getActivity(), ""+textNumber.getText().toString().trim().length(), Toast.LENGTH_SHORT).show();
+////                            Toast.makeText(getActivity(), "Done clicked", Toast.LENGTH_SHORT).show();
+//                        }
+//                    });
 
-                    btnDone.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            if(textName.getText().toString().equals(""))
-                            {
-                                textName.setError("Please enter a name");
-                            }
-                            else if(textNumber.getText().toString().equals("") || textNumber.getText().toString().trim().length()!=10)
-                            {
-                                textNumber.setError("Please enter valid number");
-//                                Toast.makeText(getActivity(), ""+textNumber.getText().toString().trim().length(), Toast.LENGTH_SHORT).show();
-                            }
-                            else{
-                                String contactName, contactNumber;
-                                contactName = textName.getText().toString().trim();
-                                contactNumber = textNumber.getText().toString().trim();
-                                saveMap(contactName, contactNumber);
-                                arrayList.add(new CustomListView(R.drawable.ic_person_foreground, contactName, contactNumber));
-                                refreshData();
-                                numbersArrayAdapter.notifyDataSetChanged();
-                                dialog.dismiss();
-                            }
-//                            Toast.makeText(getActivity(), ""+textNumber.getText().toString().trim().length(), Toast.LENGTH_SHORT).show();
-//                            Toast.makeText(getActivity(), "Done clicked", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
-                    btnCancel.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            dialog.dismiss();
-                            Toast.makeText(getActivity(), "Delete clicked", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
-                    dialog.show();
+//                    btnCancel.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            dialog.dismiss();
+//                            Toast.makeText(getActivity(), "Delete clicked", Toast.LENGTH_SHORT).show();
+//                        }
+//                    });
+//
+//                    dialog.show();
                 }
                 else Toast.makeText(getActivity(), "You can add maximum 3 contacts", Toast.LENGTH_SHORT).show();
             }
@@ -408,6 +417,54 @@ public class EmergencyContantFragment extends Fragment {
         return outputMap;
     }
 
+    private void pickContact() {
+        Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_URI);
+        startActivityForResult(intent, PICK_CONTACT_REQUEST);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_CONTACT_REQUEST && resultCode == Activity.RESULT_OK) {
+            if (data != null) {
+                Uri contactUri = data.getData();
+                if (contactUri != null) {
+                    displayContactDetails(contactUri);
+                }
+            }
+        }
+    }
+
+    private void displayContactDetails(Uri contactUri) {
+        String[] projection = {
+                ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
+                ContactsContract.CommonDataKinds.Phone.NUMBER
+        };
+
+        try (Cursor cursor = getActivity().getContentResolver().query(contactUri, projection, null, null, null)) {
+            if (cursor != null && cursor.moveToFirst()) {
+                int nameColumnIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
+                int phoneNumberColumnIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
+
+                String name = cursor.getString(nameColumnIndex);
+                String phoneNumber = cursor.getString(phoneNumberColumnIndex);
+
+                // Remove non-digit characters and get the last 10 digits of the phone number
+                phoneNumber = phoneNumber.replaceAll("\\D+", "");
+                if (phoneNumber.length() > 10) {
+                    phoneNumber = phoneNumber.substring(phoneNumber.length() - 10);
+                }
+                saveMap(name, phoneNumber);
+                arrayList.add(new CustomListView(R.drawable.ic_person_foreground, name, phoneNumber));
+                refreshData();
+
+//                nameTextView.setText("Contact Name: " + name);
+//                phoneNumberTextView.setText("Phone Number: " + phoneNumber);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public void onPause() {
         super.onPause();

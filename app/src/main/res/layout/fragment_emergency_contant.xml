@@ -12,12 +12,12 @@
         android:background="@drawable/bg_contacts">
         <TextView
             android:id="@+id/textView"
-            android:layout_width="310dp"
-            android:layout_height="51dp"
-            android:layout_marginTop="28dp"
+            android:layout_width="@dimen/_310sdp"
+            android:layout_height="@dimen/_51sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:text="@string/emergency_contacts"
             android:textColor="@color/black"
-            android:textSize="25sp"
+            android:textSize="@dimen/_25sdp"
             android:textAlignment="center"
             android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
@@ -27,10 +27,10 @@
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="385dp"
-            android:layout_height="218dp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_180sdp"
             android:orientation="horizontal"
-            android:padding="20dp"
+            android:padding="@dimen/_15sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.615"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,26 +41,26 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:layout_margin="5dp"
+                android:layout_margin="@dimen/_5sdp"
                 android:background="@drawable/bg_emergency_icon">
 
                 <ImageButton
                     android:id="@+id/btnPolice"
                     android:layout_width="match_parent"
                     android:background="@null"
-                    android:layout_height="90dp"
+                    android:layout_height="@dimen/_70sdp"
                     android:contentDescription="police_icon"
                     app:srcCompat="@drawable/ic_police_icon_foreground" />
 
                 <TextView
                     android:id="@+id/textView2"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="@dimen/_30sdp"
                     android:text="Police"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textFontWeight="10"
-                    android:textSize="25dp" />
+                    android:textSize="@dimen/_20sdp" />
 
                 <TextView
                     android:id="@+id/textView4"
@@ -70,7 +70,7 @@
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textFontWeight="5"
-                    android:textSize="20dp" />
+                    android:textSize="@dimen/_15ssp" />
             </LinearLayout>
 
             <LinearLayout
@@ -78,13 +78,13 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:layout_margin="5dp"
+                android:layout_margin="@dimen/_5sdp"
                 android:background="@drawable/bg_emergency_icon">
 
                 <ImageButton
                     android:id="@+id/btnAmbulance"
                     android:layout_width="match_parent"
-                    android:layout_height="90dp"
+                    android:layout_height="@dimen/_70sdp"
                     android:background="@null"
                     android:contentDescription="ambulance_icon"
                     app:srcCompat="@drawable/ic_ambulance_icon_foreground"/>
@@ -92,12 +92,12 @@
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="@dimen/_30sdp"
                     android:text="Ambulance"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textFontWeight="10"
-                    android:textSize="25dp" />
+                    android:textSize="@dimen/_20sdp" />
 
                 <TextView
                     android:id="@+id/textView5"
@@ -107,16 +107,16 @@
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textFontWeight="5"
-                    android:textSize="20dp" />
+                    android:textSize="@dimen/_15ssp" />
             </LinearLayout>
         </LinearLayout>
 
         <ListView
             android:id="@+id/contactListView"
-            android:layout_width="368dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/list_item_design"
-            android:padding="20dp"
+            android:padding="@dimen/_10sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.627"
@@ -127,28 +127,28 @@
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/add_fab"
-            android:layout_width="59dp"
-            android:layout_height="63dp"
+            android:layout_width="@dimen/_59sdp"
+            android:layout_height="@dimen/_63sdp"
             android:layout_gravity="end"
-            android:layout_marginBottom="152dp"
+            android:layout_marginBottom="117dp"
             android:contentDescription="Action"
             app:icon="@drawable/ic_touch_foreground"
-            app:iconSize="40dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:iconSize="@dimen/_30sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/space"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.908"
             app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/add_new_contact"
-            android:layout_width="59dp"
-            android:layout_height="63dp"
+            android:layout_width="@dimen/_59sdp"
+            android:layout_height="@dimen/_50sdp"
             android:layout_gravity="end"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="@dimen/_10sdp"
             android:contentDescription="Add New Contact"
             android:src="@drawable/ic_add_black_foreground"
             android:scaleType="center"
-            app:maxImageSize="30dp"
+            app:maxImageSize="@dimen/_30ssp"
             app:fabSize="normal"
             app:layout_constraintBottom_toTopOf="@+id/add_fab"
             app:layout_constraintEnd_toEndOf="@+id/add_fab"
@@ -157,14 +157,14 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/add_new_delete"
-            android:layout_width="59dp"
-            android:layout_height="63dp"
+            android:layout_width="@dimen/_59sdp"
+            android:layout_height="@dimen/_50sdp"
             android:layout_gravity="end"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/_16sdp"
             android:contentDescription="Delete all Contacts"
             android:src="@drawable/ic_delete_icon_foreground"
             android:scaleType="center"
-            app:maxImageSize="30dp"
+            app:maxImageSize="@dimen/_30sdp"
             app:fabSize="normal"
             app:layout_constraintBottom_toTopOf="@+id/add_new_contact"
             app:layout_constraintEnd_toEndOf="@+id/add_new_contact"
@@ -175,7 +175,7 @@
             android:id="@+id/deleteContactText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="56dp"
+            android:layout_marginBottom="@dimen/_46sdp"
             android:text="Delete all contacts"
             app:layout_constraintBottom_toTopOf="@+id/addContactText"
             app:layout_constraintEnd_toEndOf="@+id/addContactText"
@@ -188,24 +188,31 @@
             android:id="@+id/addContactText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="52dp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_50sdp"
             android:text="Add new contact"
             android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/actionText"
             app:layout_constraintEnd_toEndOf="@+id/actionText"
+            app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="@+id/actionText" />
 
         <TextView
             android:id="@+id/actionText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="188dp"
-            android:layout_marginBottom="172dp"
+            android:layout_marginBottom="@dimen/_100sdp"
             android:text="Action"
+            android:layout_marginRight="@dimen/_10sdp"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/add_fab"
-            app:layout_constraintHorizontal_bias="0.423"
+            app:layout_constraintHorizontal_bias="0.861"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <Space
+            android:id="@+id/space"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
