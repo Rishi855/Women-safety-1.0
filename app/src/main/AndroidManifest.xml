@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.safestree">
 
     <uses-feature
         android:name="android.hardware.telephony"
         android:required="false" />
-<!--    <uses-permission android:name="android.permission.CALL_PHONE"/>-->
-<!--    <uses-permission android:name="android.permission.SEND_SMS"/>-->
-<!--    <uses-permission android:name="android.permission.INTERNET"/>-->
-<!--    <uses-permission android:name="android.permission.SEND_SMS"/>-->
-<!--    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>-->
-<!--    <uses-permission android:name="android.permission.RECEIVE_SMS"/>-->
-<!--    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>-->
-<!--    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />-->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -24,15 +17,14 @@
     <uses-permission android:name="android.permission.RECEIVE_SMS"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
-<!--    <uses-permission  android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>-->
 
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_app_icon_1"
+        android:icon="@mipmap/ic_app_icon_2"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_app_icon_1_round"
+        android:roundIcon="@mipmap/ic_app_icon_2_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CustomNavigationBar"
         tools:targetApi="31">
@@ -50,12 +42,12 @@
             </intent-filter>
         </activity>
 
-        <meta-data
-            android:name="com.google.android.gms.maps.api.token"
-            android:value="AIzaSyCgnlpCkSsI4zNpOecUjAPiIRcqyk0VFfE" />
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCgnlpCkSsI4zNpOecUjAPiIRcqyk0VFfE" />
+<!--        <meta-data-->
+<!--            android:name="com.google.android.gms.maps.api.token"-->
+<!--            android:value="AIzaSyCgnlpCkSsI4zNpOecUjAPiIRcqyk0VFfE" />-->
+<!--        <meta-data-->
+<!--            android:name="com.google.android.geo.API_KEY"-->
+<!--            android:value="AIzaSyCgnlpCkSsI4zNpOecUjAPiIRcqyk0VFfE" />-->
     </application>
 
 </manifest>

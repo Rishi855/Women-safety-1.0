@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".EmergencyContantFragment">
+    tools:context="com.safestree.EmergencyContantFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -175,7 +175,7 @@
             android:id="@+id/deleteContactText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_46sdp"
+            android:layout_marginBottom="@dimen/_50sdp"
             android:text="Delete all contacts"
             app:layout_constraintBottom_toTopOf="@+id/addContactText"
             app:layout_constraintEnd_toEndOf="@+id/addContactText"

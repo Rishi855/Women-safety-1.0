@@ -1,4 +1,4 @@
-package com.example.customnavigationbar;
+package com.safestree;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -17,19 +17,14 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.appcompat.app.AppCompatDelegate;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -42,7 +37,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -148,58 +142,9 @@ public class EmergencyContantFragment extends Fragment {
                 action.shrink();
                 allVisible=false;
                 Map<String,String> hashMap = loadMap();
-//                Toast.makeText(MainActivity.this, ""+hashMap.size(), Toast.LENGTH_SHORT).show();
                 if(hashMap.size()<3) {
-//                    dialog.setContentView(R.layout.contact_entry);
-//                    dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//                    dialog.setCancelable(false);
-//                    dialog.getWindow().getAttributes().windowAnimations = androidx.appcompat.R.style.Animation_AppCompat_Dialog;
-
-//                    EditText textName = dialog.findViewById(R.id.userName);
-//                    EditText textNumber = dialog.findViewById(R.id.userNumber);
                     pickContact();
                     numbersArrayAdapter.notifyDataSetChanged();
-//                    String Cname=textName.getText().toString();
-//                    String Cnumber=textNumber.getText().toString();
-//                    Button btnDone = dialog.findViewById(R.id.btnDone);
-//                    Button btnCancel = dialog.findViewById(R.id.btnCancel);
-
-//                    btnDone.setOnClickListener(new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View v) {
-//                            if(textName.getText().toString().equals(""))
-//                            {
-//                                textName.setError("Please enter a name");
-//                            }
-//                            else if(textNumber.getText().toString().equals("") || textNumber.getText().toString().trim().length()!=10)
-//                            {
-//                                textNumber.setError("Please enter valid number");
-////                                Toast.makeText(getActivity(), ""+textNumber.getText().toString().trim().length(), Toast.LENGTH_SHORT).show();
-//                            }
-//                            else{
-//                                String contactName, contactNumber;
-//                                contactName = textName.getText().toString().trim();
-//                                contactNumber = textNumber.getText().toString().trim();
-//                                saveMap(contactName, contactNumber);
-//                                arrayList.add(new CustomListView(R.drawable.ic_person_foreground, contactName, contactNumber));
-//                                refreshData();
-//                                numbersArrayAdapter.notifyDataSetChanged();
-//                                dialog.dismiss();
-//                            }
-////                            Toast.makeText(getActivity(), ""+textNumber.getText().toString().trim().length(), Toast.LENGTH_SHORT).show();
-////                            Toast.makeText(getActivity(), "Done clicked", Toast.LENGTH_SHORT).show();
-//                        }
-//                    });
-
-//                    btnCancel.setOnClickListener(new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View v) {
-//                            dialog.dismiss();
-//                            Toast.makeText(getActivity(), "Delete clicked", Toast.LENGTH_SHORT).show();
-//                        }
-//                    });
-//
-//                    dialog.show();
                 }
                 else Toast.makeText(getActivity(), "You can add maximum 3 contacts", Toast.LENGTH_SHORT).show();
             }
@@ -238,7 +183,6 @@ public class EmergencyContantFragment extends Fragment {
                         SharedPreferences pSharedPref = getActivity().getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
                         pSharedPref.edit().remove("emergencyName").putString("emergencyName",entry.getKey()).apply();
                         pSharedPref.edit().remove("emergencyContact").putString("emergencyContact",entry.getValue()).apply();
-//                        Toast.makeText(getActivity(), entry.getKey()+" "+entry.getValue(), Toast.LENGTH_SHORT).show();
                         break;
                     }
                 }

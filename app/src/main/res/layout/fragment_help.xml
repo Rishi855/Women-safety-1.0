@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".HelpFragment">
+    tools:context="com.safestree.HelpFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -156,7 +156,7 @@
                                     <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:text="By using default number system will sent locationYour default number for sos has been set as number and you can change it by tapping the contact in contact tab"
+                                        android:text="By using default number system will sent locationYour default number for sos has been set as number and you can change it by tapping the contact in contact tab and 'Dark' color is your default number."
                                         android:textColor="@color/black" />
                                 </LinearLayout>
                             </LinearLayout>

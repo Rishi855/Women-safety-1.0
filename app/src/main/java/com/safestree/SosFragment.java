@@ -1,4 +1,4 @@
-package com.example.customnavigationbar;
+package com.safestree;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -12,16 +12,6 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.Settings;
@@ -31,14 +21,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 
 
 public class SosFragment extends Fragment {
@@ -62,14 +55,10 @@ public class SosFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_sos, container, false);
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
-//        getLastLocation();
+
         SharedPreferences sh = getActivity().getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
-//        String s1 = sh.getString("name", "");
-//        int a = sh.getInt("age", 0);
-//        SharedPreferences pSharedPref = getContext().getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
 
         dial = sh.getString("emergencyContact", "");
-//        Toast.makeText(getActivity(), ""+dial, Toast.LENGTH_SHORT).show();
         sosCall = sh.getBoolean("sosCall",false);
         sosMessage = sh.getBoolean("sosMessage",false);
         shakeMessage = sh.getBoolean("shakeMessage",false);
@@ -116,29 +105,6 @@ public class SosFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         }
-//        Toast.makeText(getActivity(), ""+sosCall, Toast.LENGTH_SHORT).show();
-//        int check_permission_sms = ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.SEND_SMS);
-//        if(check_permission_sms == PackageManager.PERMISSION_GRANTED){
-//            SmsManager smsManager = SmsManager.getDefault();
-//            for(int i=0;i<5;i++)
-//            {
-//                final Handler handler = new Handler();
-//                handler.postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        Toast.makeText(getActivity(), "Message sent", Toast.LENGTH_SHORT).show();
-//
-//                    }
-//                }, 1000);
-//            }
-//            smsManager.sendTextMessage("9022739688", null, "https://maps.google.com/?q="+lat+","+lon, null, null);
-//            Toast.makeText(getActivity(), "Message sent", Toast.LENGTH_SHORT).show();
-//        }
-//        else{FragmentManager fragmentManager = getParentFragmentManager();
-//            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//            fragmentTransaction.replace(R.id.flFragment,new SettingFragment());
-//            fragmentTransaction.commit();
-//        }
         return view;
     }
 
@@ -215,9 +181,4 @@ public class SosFragment extends Fragment {
         LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
     }
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//
-//    }
 }

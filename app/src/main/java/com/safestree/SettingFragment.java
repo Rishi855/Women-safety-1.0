@@ -1,4 +1,4 @@
-package com.example.customnavigationbar;
+package com.safestree;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -9,30 +9,24 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.hardware.SensorManager;
-import android.media.Image;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-
-import android.telephony.SmsManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -167,7 +161,7 @@ public class SettingFragment extends Fragment {
         return view;
     }
 
-    private void show_bottom_sheet_sos() {
+        private void show_bottom_sheet_sos() {
         final BottomSheetDialog bottomSheet = new BottomSheetDialog(getActivity());
         bottomSheet.setContentView(R.layout.sos_settings);
         CheckBox sosCall = bottomSheet.findViewById(R.id.pcall);
@@ -229,6 +223,7 @@ public class SettingFragment extends Fragment {
                 if(switchActive.isChecked()) ActiveService();
                 else DeactivateService();
                 bottomSheet.dismiss();
+                Toast.makeText(getActivity(), "It might take 5 to 10 seconds to change to the setting.", Toast.LENGTH_SHORT).show();
 //                done.setBackground(getResources().getDrawable(R.drawable.done_button));
             }
         });

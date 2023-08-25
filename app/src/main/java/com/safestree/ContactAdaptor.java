@@ -1,8 +1,7 @@
-package com.example.customnavigationbar;
+package com.safestree;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,14 +9,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.customnavigationbar.CustomListView;
 
 import java.util.ArrayList;
 
@@ -77,6 +72,7 @@ public class ContactAdaptor extends ArrayAdapter<CustomListView> {
 //            View root = someView.getRootView();
 //            someView.setVisibility(View.GONE);
             someView.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.bg_selected_emergency));
+
 //                Toast.makeText(getContext(), position + " " + a + " " + currentNumberPosition.getContactNumber() + " " + b, Toast.LENGTH_SHORT).show();
         }
         else {
