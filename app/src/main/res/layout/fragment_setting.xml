@@ -166,6 +166,7 @@
                 android:paddingTop="@dimen/_7sdp"
                 android:paddingBottom="@dimen/_7sdp"
                 android:background="@drawable/rounded_border"
+                android:layout_marginBottom="@dimen/_7sdp"
                 android:orientation="horizontal">
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnShakeSetting"
@@ -185,6 +186,32 @@
                     android:text="You can change the setting for sending message and level of shake by clicking here"
                     android:textSize="@dimen/_15sdp"
                     />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/_7sdp"
+                android:paddingBottom="@dimen/_7sdp"
+                android:background="@drawable/rounded_border"
+                android:orientation="horizontal">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnChildParent"
+                    android:layout_width="@dimen/_50sdp"
+                    android:contentDescription="Shake setting"
+                    android:layout_height="@dimen/_50sdp"
+                    android:background="@drawable/ic_child_parent_icon_foreground"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:id="@+id/txtConnect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:text="Advance setting for child and parent connection"
+                    android:textSize="@dimen/_15sdp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

@@ -1,5 +1,6 @@
 package com.safestree;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -9,6 +10,9 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,6 +27,7 @@ import android.provider.Settings;
 import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.safestree.databinding.ActivityMainBinding;
@@ -39,6 +44,12 @@ public class MainActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS=0;
     private static final int MY_PERMISSIONS_REQUEST_AUTO_CALL=1;
     private static final int MY_PERMISSIONS_REQUEST_LOCATION=2;
+
+    private String connectedDeviceAdd = "";
+    private BluetoothDevice connectedDevice;
+
+    private BluetoothAdapter bluetoothAdapter;
+    private TextView connectionStatusTextView;
     public String lat = "";
     public String lon = "";
     FusedLocationProviderClient mFusedLocationClient;
@@ -202,4 +213,73 @@ public class MainActivity extends AppCompatActivity {
         LocationManager locationManager = (LocationManager)MainActivity.this.getSystemService(Context.LOCATION_SERVICE);
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
     }
+//    private boolean checkConnectedDevices(String connectedDeviceAdd) {
+//        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+//            // Request the necessary permission if it's not granted
+//            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.BLUETOOTH_CONNECT}, 1);
+//        } else {
+//            // Replace "YOUR_DEVICE_ADDRESS_HERE" with the actual Bluetooth device address
+////            String deviceAddress = "00:11:22:33:44:55"; // Replace with the actual address
+//
+//            BluetoothDevice device = bluetoothAdapter.getRemoteDevice(connectedDeviceAdd);
+//            Toast.makeText(this, ""+device+"LOL", Toast.LENGTH_SHORT).show();
+//            if (device != null) {
+////                bluetoothGatt = device.connectGatt(this, false, gattCallback);
+//                return false;
+//            }
+//            else
+//                return true;
+//        }
+//        return false;
+//    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 1 && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//            checkConnectedDevices();
+        } else {
+            Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show();
+        }
+        if (requestCode == MY_PERMISSIONS_REQUEST_SEND_SMS) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission granted, you can now send SMS
+            } else {
+                // Permission denied, handle this gracefully (e.g., show a message or disable SMS-related features)
+            }
+        }
+    }
+//    private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
+//        @Override
+//        public void onReceive(Context context, Intent intent) {
+//            String action = intent.getAction();
+//
+//            if (BluetoothDevice.ACTION_ACL_CONNECTED.equals(action)) {
+//                // Get the BluetoothDevice object from the Intent
+//                BluetoothDevice device = intent
+//                        .getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+//
+//                connectedDeviceAdd = device.getAddress();
+//                Toast.makeText(context, connectedDeviceAdd+"", Toast.LENGTH_SHORT).show();
+//                connectedDevice = BluetoothAdapter.getDefaultAdapter().getRemoteDevice(connectedDeviceAdd);
+//                checkConnectedDevices(connectedDeviceAdd);
+//                Toast.makeText(context, "Device connected", Toast.LENGTH_SHORT).show();
+//                connectionStatusTextView.setText("Connected");
+//
+//
+//            } else if (BluetoothDevice.ACTION_ACL_DISCONNECTED.equals(action)) {
+//                Log.e("TAG", "Device Disconnected");
+//                Toast.makeText(context, "OK", Toast.LENGTH_SHORT).show();
+//                connectionStatusTextView.setText("Disconnected");
+//
+//                String dial = "9022739688"; // Replace with the recipient's actual phone number
+//                String message = "Hello";
+//                SmsManager smsManager = SmsManager.getDefault();
+//                smsManager.sendTextMessage(dial, null, message, null, null);
+//
+//            }
+//        }
+//    };
+
+
 }

@@ -71,470 +71,493 @@
             <!--            android:layout_width="match_parent"-->
             <!--            android:layout_height="186dp" />-->
 
-            <ScrollView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/defaultCardView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/_16sdp"
-                        android:layout_marginVertical="@dimen/_3sdp"
-                        android:padding="@dimen/_10sdp"
-                        app:cardBackgroundColor="#FFFFFF"
-                        app:cardCornerRadius="@dimen/_5sdp">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="vertical">
-
-                                <LinearLayout
-                                    android:id="@+id/linearLayoutDefault"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:orientation="horizontal">
-
-                                    <ImageView
-                                        android:id="@+id/imageButton1"
-                                        android:layout_width="@dimen/_54sdp"
-                                        android:layout_height="@dimen/_54sdp"
-                                        android:background="@null"
-                                        android:contentDescription="default number"
-                                        android:scaleType="fitCenter"
-                                        android:src="@drawable/ic_default_number_icon_foreground" />
-
-                                    <TextView
-                                        android:id="@+id/textView1"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center"
-                                        android:layout_marginStart="@dimen/_16sdp"
-                                        android:text="Your Default Number"
-                                        android:textColor="#000000"
-                                        android:textStyle="bold" />
-
-                                    <Space
-                                        android:layout_width="0dp"
-                                        android:layout_height="0dp"
-                                        android:layout_weight="1" />
-
-                                    <ImageView
-                                        android:id="@+id/defaultArrow"
-                                        android:layout_width="@dimen/_54sdp"
-                                        android:layout_height="@dimen/_54sdp"
-                                        android:background="@null"
-                                        android:contentDescription="default number"
-                                        android:scaleType="fitCenter"
-                                        android:src="@drawable/ic_to_bottom_foreground" />
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:id="@+id/defaultInfo"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginHorizontal="@dimen/_16sdp"
-                                    android:layout_marginVertical="@dimen/_3sdp"
-                                    android:background="@drawable/bg_info_text"
-                                    android:padding="@dimen/_5sdp"
-                                    android:visibility="gone"
-                                    app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-                                    app:layout_constraintStart_toStartOf="@id/linearLayout"
-                                    app:layout_constraintTop_toBottomOf="parent">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:text="By using default number system will sent locationYour default number for sos has been set as number and you can change it by tapping the contact in contact tab and 'Dark' color is your default number."
-                                        android:textColor="@color/black" />
-                                </LinearLayout>
-                            </LinearLayout>
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/callPoliceCardView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/_15sdp"
-                        android:layout_marginVertical="@dimen/_3sdp"
-                        android:padding="@dimen/_10sdp"
-                        app:cardBackgroundColor="#FFFFFF"
-                        app:cardCornerRadius="@dimen/_5sdp">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="vertical">
-
-                                <LinearLayout
-                                    android:id="@+id/linearLayoutPolice"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:orientation="horizontal">
-
-
-                                    <ImageView
-                                        android:id="@+id/imageButton2"
-                                        android:layout_width="@dimen/_54sdp"
-                                        android:layout_height="match_parent"
-                                        android:background="@null"
-                                        android:contentDescription="police"
-                                        android:scaleType="fitCenter"
-                                        android:src="@drawable/ic_police_icon_foreground"
-                                        app:layout_constraintBottom_toBottomOf="parent"
-                                        app:layout_constraintStart_toStartOf="parent"
-                                        app:layout_constraintTop_toTopOf="parent" />
-
-                                    <TextView
-                                        android:id="@+id/textView2"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center"
-                                        android:layout_marginStart="@dimen/_16sdp"
-                                        android:text="Call Nearby Police Station"
-                                        android:textColor="#000000"
-                                        android:textStyle="bold"
-                                        app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
-                                        app:layout_constraintStart_toEndOf="@+id/imageButton2"
-                                        app:layout_constraintTop_toTopOf="@+id/imageButton2" />
-
-                                    <Space
-                                        android:layout_width="0dp"
-                                        android:layout_height="0dp"
-                                        android:layout_weight="1" />
-
-                                    <ImageView
-                                        android:id="@+id/policeArrow"
-                                        android:layout_width="@dimen/_54sdp"
-                                        android:layout_height="@dimen/_54sdp"
-                                        android:background="@null"
-                                        android:contentDescription="default number"
-                                        android:scaleType="fitCenter"
-                                        android:src="@drawable/ic_to_bottom_foreground" />
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:id="@+id/policeInfo"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginHorizontal="@dimen/_16sdp"
-                                    android:layout_marginVertical="@dimen/_5sdp"
-                                    android:background="@drawable/bg_info_text"
-                                    android:padding="@dimen/_5sdp"
-                                    android:visibility="gone"
-                                    app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-                                    app:layout_constraintStart_toStartOf="@id/linearLayout"
-                                    app:layout_constraintTop_toBottomOf="parent">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:text="You can call nearby police station by just tapping on the police station contact card in contact tab"
-                                        android:textColor="@color/black" />
-                                </LinearLayout>
-                            </LinearLayout>
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <!-- Third Card -->
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/callHospitalCardView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/_16sdp"
-                        android:layout_marginVertical="@dimen/_3sdp"
-                        android:padding="@dimen/_10sdp"
-                        app:cardBackgroundColor="#FFFFFF"
-                        app:cardCornerRadius="@dimen/_5sdp">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="vertical">
-
-                                <LinearLayout
-                                    android:id="@+id/linearLayoutHospital"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:orientation="horizontal">
-
-
-                                    <ImageView
-                                        android:id="@+id/imageButton3"
-                                        android:layout_width="64dp"
-                                        android:layout_height="64dp"
-                                        android:background="@null"
-                                        android:contentDescription="ambulance"
-                                        android:scaleType="fitCenter"
-                                        android:src="@drawable/ic_ambulance_icon_foreground"
-                                        app:layout_constraintBottom_toBottomOf="parent"
-                                        app:layout_constraintStart_toStartOf="parent"
-                                        app:layout_constraintTop_toTopOf="parent" />
-
-                                    <TextView
-                                        android:id="@+id/textView3"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center"
-                                        android:layout_marginStart="16dp"
-                                        android:text="Call Nearby Hospital"
-                                        android:textColor="#000000"
-                                        android:textStyle="bold"
-                                        app:layout_constraintBottom_toBottomOf="@+id/imageButton3"
-                                        app:layout_constraintStart_toEndOf="@+id/imageButton3"
-                                        app:layout_constraintTop_toTopOf="@+id/imageButton3" />
-
-                                    <Space
-                                        android:layout_width="0dp"
-                                        android:layout_height="0dp"
-                                        android:layout_weight="1" />
-
-                                    <ImageView
-                                        android:id="@+id/hospitalArrow"
-                                        android:layout_width="@dimen/_54sdp"
-                                        android:layout_height="@dimen/_54sdp"
-                                        android:background="@null"
-                                        android:contentDescription="default number"
-                                        android:scaleType="fitCenter"
-                                        android:src="@drawable/ic_to_bottom_foreground" />
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:id="@+id/hospitalInfo"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginHorizontal="@dimen/_16sdp"
-                                    android:layout_marginVertical="@dimen/_5sdp"
-                                    android:background="@drawable/bg_info_text"
-                                    android:padding="@dimen/_5sdp"
-                                    android:visibility="gone"
-                                    app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-                                    app:layout_constraintStart_toStartOf="@id/linearLayout"
-                                    app:layout_constraintTop_toBottomOf="parent">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:text="You can call nearby hospital by just tapping on the hospital contact card in contact tab"
-                                        android:textColor="@color/black" />
-                                </LinearLayout>
-                            </LinearLayout>
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/shakeCardView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/_16sdp"
-                        android:layout_marginVertical="@dimen/_3sdp"
-                        android:padding="@dimen/_10sdp"
-                        app:cardBackgroundColor="#FFFFFF"
-                        app:cardCornerRadius="@dimen/_5sdp">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="vertical">
-
-                                <LinearLayout
-                                    android:id="@+id/linearLayoutShake"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:orientation="horizontal">
-
-                                    <ImageView
-                                        android:id="@+id/imageButton4"
-                                        android:layout_width="@dimen/_54sdp"
-                                        android:layout_height="@dimen/_54sdp"
-                                        android:background="@null"
-                                        android:contentDescription="shake"
-                                        android:scaleType="fitCenter"
-                                        android:src="@drawable/ic_shake_icon_foreground"
-                                        app:layout_constraintBottom_toBottomOf="parent"
-                                        app:layout_constraintStart_toStartOf="parent"
-                                        app:layout_constraintTop_toTopOf="parent" />
-
-                                    <TextView
-                                        android:id="@+id/textView4"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center"
-                                        android:layout_marginStart="@dimen/_16sdp"
-                                        android:text="Shake to make call"
-                                        android:textColor="#000000"
-                                        android:textStyle="bold"
-                                        app:layout_constraintBottom_toBottomOf="@+id/imageButton4"
-                                        app:layout_constraintStart_toEndOf="@+id/imageButton4"
-                                        app:layout_constraintTop_toTopOf="@+id/imageButton4" />
-
-                                    <Space
-                                        android:layout_width="0dp"
-                                        android:layout_height="0dp"
-                                        android:layout_weight="1" />
-
-                                    <ImageView
-                                        android:id="@+id/shakeArrow"
-                                        android:layout_width="@dimen/_54sdp"
-                                        android:layout_height="@dimen/_54sdp"
-                                        android:background="@null"
-                                        android:contentDescription="default number"
-                                        android:scaleType="fitCenter"
-                                        android:src="@drawable/ic_to_bottom_foreground" />
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:id="@+id/shakeInfo"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginHorizontal="@dimen/_16sdp"
-                                    android:layout_marginVertical="@dimen/_5sdp"
-                                    android:background="@drawable/bg_info_text"
-                                    android:padding="@dimen/_5sdp"
-                                    android:visibility="gone"
-                                    app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-                                    app:layout_constraintStart_toStartOf="@id/linearLayout"
-                                    app:layout_constraintTop_toBottomOf="parent">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:text="Safestree allows to make an emergency call just by shaking the phone even though your app is cleared from recents.
-You can change the settings for same in settings tab"
-                                        android:textColor="@color/black" />
-                                </LinearLayout>
-                            </LinearLayout>
-
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/sosCardView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/_16sdp"
-                        android:layout_marginVertical="@dimen/_3sdp"
-                        android:padding="@dimen/_10sdp"
-                        app:cardBackgroundColor="#FFFFFF"
-                        app:cardCornerRadius="@dimen/_5sdp">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="vertical">
-
-                                <LinearLayout
-                                    android:id="@+id/linearLayoutSos"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:orientation="horizontal">
-
-
-                                    <ImageView
-                                        android:id="@+id/imageButton5"
-                                        android:layout_width="@dimen/_54sdp"
-                                        android:layout_height="@dimen/_54sdp"
-                                        android:background="@null"
-                                        android:contentDescription="shake"
-                                        android:scaleType="fitCenter"
-                                        android:src="@drawable/ic_sos_alert_foreground"
-                                        app:layout_constraintBottom_toBottomOf="parent"
-                                        app:layout_constraintStart_toStartOf="parent"
-                                        app:layout_constraintTop_toTopOf="parent" />
-
-                                    <TextView
-                                        android:id="@+id/textView5"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center"
-                                        android:layout_marginStart="16dp"
-                                        android:gravity="center"
-                                        android:text="About SOS button"
-                                        android:textColor="#000000"
-                                        android:textStyle="bold"
-                                        app:layout_constraintBottom_toBottomOf="@+id/imageButton5"
-                                        app:layout_constraintStart_toEndOf="@+id/imageButton5"
-                                        app:layout_constraintTop_toTopOf="@+id/imageButton5" />
-
-                                    <Space
-                                        android:layout_width="0dp"
-                                        android:layout_height="0dp"
-                                        android:layout_weight="1" />
-
-                                    <ImageView
-                                        android:id="@+id/sosArrow"
-                                        android:layout_width="@dimen/_54sdp"
-                                        android:layout_height="@dimen/_54sdp"
-                                        android:background="@null"
-                                        android:contentDescription="default number"
-                                        android:scaleType="fitCenter"
-                                        android:src="@drawable/ic_to_bottom_foreground" />
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:id="@+id/sosInfo"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginHorizontal="@dimen/_16sdp"
-                                    android:layout_marginVertical="@dimen/_5sdp"
-                                    android:background="@drawable/bg_info_text"
-                                    android:padding="@dimen/_5sdp"
-                                    android:visibility="gone"
-                                    app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-                                    app:layout_constraintStart_toStartOf="@id/linearLayout"
-                                    app:layout_constraintTop_toBottomOf="parent">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:text="You can trigger an sos call and SMS by just clicking the sos button that will send the current location and an alert message to your default emergency contact"
-                                        android:textColor="@color/black" />
-                                </LinearLayout>
-                            </LinearLayout>
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-                    <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_90sdp" />
-                </LinearLayout>
-            </ScrollView>
+                android:layout_height="30dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Community"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="@dimen/_7ssp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Community"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="@dimen/_7ssp"/>
+            </LinearLayout>
+
+<!--            <ScrollView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <com.google.android.material.card.MaterialCardView-->
+<!--                        android:id="@+id/defaultCardView"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginHorizontal="@dimen/_16sdp"-->
+<!--                        android:layout_marginVertical="@dimen/_3sdp"-->
+<!--                        android:padding="@dimen/_10sdp"-->
+<!--                        app:cardBackgroundColor="#FFFFFF"-->
+<!--                        app:cardCornerRadius="@dimen/_5sdp">-->
+
+<!--                        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent">-->
+
+
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:orientation="vertical">-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:id="@+id/linearLayoutDefault"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="match_parent"-->
+<!--                                    android:orientation="horizontal">-->
+
+<!--                                    <ImageView-->
+<!--                                        android:id="@+id/imageButton1"-->
+<!--                                        android:layout_width="@dimen/_54sdp"-->
+<!--                                        android:layout_height="@dimen/_54sdp"-->
+<!--                                        android:background="@null"-->
+<!--                                        android:contentDescription="default number"-->
+<!--                                        android:scaleType="fitCenter"-->
+<!--                                        android:src="@drawable/ic_default_number_icon_foreground" />-->
+
+<!--                                    <TextView-->
+<!--                                        android:id="@+id/textView1"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:layout_gravity="center"-->
+<!--                                        android:layout_marginStart="@dimen/_16sdp"-->
+<!--                                        android:text="Your Default Number"-->
+<!--                                        android:textColor="#000000"-->
+<!--                                        android:textStyle="bold" />-->
+
+<!--                                    <Space-->
+<!--                                        android:layout_width="0dp"-->
+<!--                                        android:layout_height="0dp"-->
+<!--                                        android:layout_weight="1" />-->
+
+<!--                                    <ImageView-->
+<!--                                        android:id="@+id/defaultArrow"-->
+<!--                                        android:layout_width="@dimen/_54sdp"-->
+<!--                                        android:layout_height="@dimen/_54sdp"-->
+<!--                                        android:background="@null"-->
+<!--                                        android:contentDescription="default number"-->
+<!--                                        android:scaleType="fitCenter"-->
+<!--                                        android:src="@drawable/ic_to_bottom_foreground" />-->
+<!--                                </LinearLayout>-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:id="@+id/defaultInfo"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginHorizontal="@dimen/_16sdp"-->
+<!--                                    android:layout_marginVertical="@dimen/_3sdp"-->
+<!--                                    android:background="@drawable/bg_info_text"-->
+<!--                                    android:padding="@dimen/_5sdp"-->
+<!--                                    android:visibility="gone"-->
+<!--                                    app:layout_constraintEnd_toEndOf="@+id/linearLayout"-->
+<!--                                    app:layout_constraintStart_toStartOf="@id/linearLayout"-->
+<!--                                    app:layout_constraintTop_toBottomOf="parent">-->
+
+<!--                                    <TextView-->
+<!--                                        android:layout_width="match_parent"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="By using default number system will sent locationYour default number for sos has been set as number and you can change it by tapping the contact in contact tab and 'Dark' color is your default number."-->
+<!--                                        android:textColor="@color/black" />-->
+<!--                                </LinearLayout>-->
+<!--                            </LinearLayout>-->
+<!--                        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--                    </com.google.android.material.card.MaterialCardView>-->
+
+
+<!--                    <com.google.android.material.card.MaterialCardView-->
+<!--                        android:id="@+id/callPoliceCardView"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginHorizontal="@dimen/_15sdp"-->
+<!--                        android:layout_marginVertical="@dimen/_3sdp"-->
+<!--                        android:padding="@dimen/_10sdp"-->
+<!--                        app:cardBackgroundColor="#FFFFFF"-->
+<!--                        app:cardCornerRadius="@dimen/_5sdp">-->
+
+<!--                        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content">-->
+
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:orientation="vertical">-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:id="@+id/linearLayoutPolice"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="match_parent"-->
+<!--                                    android:orientation="horizontal">-->
+
+
+<!--                                    <ImageView-->
+<!--                                        android:id="@+id/imageButton2"-->
+<!--                                        android:layout_width="@dimen/_54sdp"-->
+<!--                                        android:layout_height="match_parent"-->
+<!--                                        android:background="@null"-->
+<!--                                        android:contentDescription="police"-->
+<!--                                        android:scaleType="fitCenter"-->
+<!--                                        android:src="@drawable/ic_police_icon_foreground"-->
+<!--                                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                                        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--                                    <TextView-->
+<!--                                        android:id="@+id/textView2"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:layout_gravity="center"-->
+<!--                                        android:layout_marginStart="@dimen/_16sdp"-->
+<!--                                        android:text="Call Nearby Police Station"-->
+<!--                                        android:textColor="#000000"-->
+<!--                                        android:textStyle="bold"-->
+<!--                                        app:layout_constraintBottom_toBottomOf="@+id/imageButton2"-->
+<!--                                        app:layout_constraintStart_toEndOf="@+id/imageButton2"-->
+<!--                                        app:layout_constraintTop_toTopOf="@+id/imageButton2" />-->
+
+<!--                                    <Space-->
+<!--                                        android:layout_width="0dp"-->
+<!--                                        android:layout_height="0dp"-->
+<!--                                        android:layout_weight="1" />-->
+
+<!--                                    <ImageView-->
+<!--                                        android:id="@+id/policeArrow"-->
+<!--                                        android:layout_width="@dimen/_54sdp"-->
+<!--                                        android:layout_height="@dimen/_54sdp"-->
+<!--                                        android:background="@null"-->
+<!--                                        android:contentDescription="default number"-->
+<!--                                        android:scaleType="fitCenter"-->
+<!--                                        android:src="@drawable/ic_to_bottom_foreground" />-->
+<!--                                </LinearLayout>-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:id="@+id/policeInfo"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginHorizontal="@dimen/_16sdp"-->
+<!--                                    android:layout_marginVertical="@dimen/_5sdp"-->
+<!--                                    android:background="@drawable/bg_info_text"-->
+<!--                                    android:padding="@dimen/_5sdp"-->
+<!--                                    android:visibility="gone"-->
+<!--                                    app:layout_constraintEnd_toEndOf="@+id/linearLayout"-->
+<!--                                    app:layout_constraintStart_toStartOf="@id/linearLayout"-->
+<!--                                    app:layout_constraintTop_toBottomOf="parent">-->
+
+<!--                                    <TextView-->
+<!--                                        android:layout_width="match_parent"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="You can call nearby police station by just tapping on the police station contact card in contact tab"-->
+<!--                                        android:textColor="@color/black" />-->
+<!--                                </LinearLayout>-->
+<!--                            </LinearLayout>-->
+
+<!--                        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--                    </com.google.android.material.card.MaterialCardView>-->
+
+<!--                    &lt;!&ndash; Third Card &ndash;&gt;-->
+<!--                    <com.google.android.material.card.MaterialCardView-->
+<!--                        android:id="@+id/callHospitalCardView"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginHorizontal="@dimen/_16sdp"-->
+<!--                        android:layout_marginVertical="@dimen/_3sdp"-->
+<!--                        android:padding="@dimen/_10sdp"-->
+<!--                        app:cardBackgroundColor="#FFFFFF"-->
+<!--                        app:cardCornerRadius="@dimen/_5sdp">-->
+
+<!--                        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content">-->
+
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:orientation="vertical">-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:id="@+id/linearLayoutHospital"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="match_parent"-->
+<!--                                    android:orientation="horizontal">-->
+
+
+<!--                                    <ImageView-->
+<!--                                        android:id="@+id/imageButton3"-->
+<!--                                        android:layout_width="@dimen/_54sdp"-->
+<!--                                        android:layout_height="@dimen/_54sdp"-->
+<!--                                        android:background="@null"-->
+<!--                                        android:contentDescription="ambulance"-->
+<!--                                        android:scaleType="fitCenter"-->
+<!--                                        android:src="@drawable/ic_ambulance_icon_foreground"-->
+<!--                                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                                        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--                                    <TextView-->
+<!--                                        android:id="@+id/textView3"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:layout_gravity="center"-->
+<!--                                        android:layout_marginStart="@dimen/_16sdp"-->
+<!--                                        android:text="Call Nearby Hospital"-->
+<!--                                        android:textColor="#000000"-->
+<!--                                        android:textStyle="bold"-->
+<!--                                        app:layout_constraintBottom_toBottomOf="@+id/imageButton3"-->
+<!--                                        app:layout_constraintStart_toEndOf="@+id/imageButton3"-->
+<!--                                        app:layout_constraintTop_toTopOf="@+id/imageButton3" />-->
+
+<!--                                    <Space-->
+<!--                                        android:layout_width="0dp"-->
+<!--                                        android:layout_height="0dp"-->
+<!--                                        android:layout_weight="1" />-->
+
+<!--                                    <ImageView-->
+<!--                                        android:id="@+id/hospitalArrow"-->
+<!--                                        android:layout_width="@dimen/_54sdp"-->
+<!--                                        android:layout_height="@dimen/_54sdp"-->
+<!--                                        android:background="@null"-->
+<!--                                        android:contentDescription="default number"-->
+<!--                                        android:scaleType="fitCenter"-->
+<!--                                        android:src="@drawable/ic_to_bottom_foreground" />-->
+<!--                                </LinearLayout>-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:id="@+id/hospitalInfo"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginHorizontal="@dimen/_16sdp"-->
+<!--                                    android:layout_marginVertical="@dimen/_5sdp"-->
+<!--                                    android:background="@drawable/bg_info_text"-->
+<!--                                    android:padding="@dimen/_5sdp"-->
+<!--                                    android:visibility="gone"-->
+<!--                                    app:layout_constraintEnd_toEndOf="@+id/linearLayout"-->
+<!--                                    app:layout_constraintStart_toStartOf="@id/linearLayout"-->
+<!--                                    app:layout_constraintTop_toBottomOf="parent">-->
+
+<!--                                    <TextView-->
+<!--                                        android:layout_width="match_parent"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="You can call nearby hospital by just tapping on the hospital contact card in contact tab"-->
+<!--                                        android:textColor="@color/black" />-->
+<!--                                </LinearLayout>-->
+<!--                            </LinearLayout>-->
+
+<!--                        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--                    </com.google.android.material.card.MaterialCardView>-->
+
+<!--                    <com.google.android.material.card.MaterialCardView-->
+<!--                        android:id="@+id/shakeCardView"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginHorizontal="@dimen/_16sdp"-->
+<!--                        android:layout_marginVertical="@dimen/_3sdp"-->
+<!--                        android:padding="@dimen/_10sdp"-->
+<!--                        app:cardBackgroundColor="#FFFFFF"-->
+<!--                        app:cardCornerRadius="@dimen/_5sdp">-->
+
+<!--                        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content">-->
+
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:orientation="vertical">-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:id="@+id/linearLayoutShake"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="match_parent"-->
+<!--                                    android:orientation="horizontal">-->
+
+<!--                                    <ImageView-->
+<!--                                        android:id="@+id/imageButton4"-->
+<!--                                        android:layout_width="@dimen/_54sdp"-->
+<!--                                        android:layout_height="@dimen/_54sdp"-->
+<!--                                        android:background="@null"-->
+<!--                                        android:contentDescription="shake"-->
+<!--                                        android:scaleType="fitCenter"-->
+<!--                                        android:src="@drawable/ic_shake_icon_foreground"-->
+<!--                                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                                        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--                                    <TextView-->
+<!--                                        android:id="@+id/textView4"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:layout_gravity="center"-->
+<!--                                        android:layout_marginStart="@dimen/_16sdp"-->
+<!--                                        android:text="Shake to make call"-->
+<!--                                        android:textColor="#000000"-->
+<!--                                        android:textStyle="bold"-->
+<!--                                        app:layout_constraintBottom_toBottomOf="@+id/imageButton4"-->
+<!--                                        app:layout_constraintStart_toEndOf="@+id/imageButton4"-->
+<!--                                        app:layout_constraintTop_toTopOf="@+id/imageButton4" />-->
+
+<!--                                    <Space-->
+<!--                                        android:layout_width="0dp"-->
+<!--                                        android:layout_height="0dp"-->
+<!--                                        android:layout_weight="1" />-->
+
+<!--                                    <ImageView-->
+<!--                                        android:id="@+id/shakeArrow"-->
+<!--                                        android:layout_width="@dimen/_54sdp"-->
+<!--                                        android:layout_height="@dimen/_54sdp"-->
+<!--                                        android:background="@null"-->
+<!--                                        android:contentDescription="default number"-->
+<!--                                        android:scaleType="fitCenter"-->
+<!--                                        android:src="@drawable/ic_to_bottom_foreground" />-->
+<!--                                </LinearLayout>-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:id="@+id/shakeInfo"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginHorizontal="@dimen/_16sdp"-->
+<!--                                    android:layout_marginVertical="@dimen/_5sdp"-->
+<!--                                    android:background="@drawable/bg_info_text"-->
+<!--                                    android:padding="@dimen/_5sdp"-->
+<!--                                    android:visibility="gone"-->
+<!--                                    app:layout_constraintEnd_toEndOf="@+id/linearLayout"-->
+<!--                                    app:layout_constraintStart_toStartOf="@id/linearLayout"-->
+<!--                                    app:layout_constraintTop_toBottomOf="parent">-->
+
+<!--                                    <TextView-->
+<!--                                        android:layout_width="match_parent"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="Safestree allows to make an emergency call just by shaking the phone even though your app is cleared from recents.-->
+<!--You can change the settings for same in settings tab"-->
+<!--                                        android:textColor="@color/black" />-->
+<!--                                </LinearLayout>-->
+<!--                            </LinearLayout>-->
+
+
+<!--                        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--                    </com.google.android.material.card.MaterialCardView>-->
+
+<!--                    <com.google.android.material.card.MaterialCardView-->
+<!--                        android:id="@+id/sosCardView"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginHorizontal="@dimen/_16sdp"-->
+<!--                        android:layout_marginVertical="@dimen/_3sdp"-->
+<!--                        android:padding="@dimen/_10sdp"-->
+<!--                        app:cardBackgroundColor="#FFFFFF"-->
+<!--                        app:cardCornerRadius="@dimen/_5sdp">-->
+
+<!--                        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content">-->
+
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:orientation="vertical">-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:id="@+id/linearLayoutSos"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="match_parent"-->
+<!--                                    android:orientation="horizontal">-->
+
+
+<!--                                    <ImageView-->
+<!--                                        android:id="@+id/imageButton5"-->
+<!--                                        android:layout_width="@dimen/_54sdp"-->
+<!--                                        android:layout_height="@dimen/_54sdp"-->
+<!--                                        android:background="@null"-->
+<!--                                        android:contentDescription="shake"-->
+<!--                                        android:scaleType="fitCenter"-->
+<!--                                        android:src="@drawable/ic_sos_alert_foreground"-->
+<!--                                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                                        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--                                    <TextView-->
+<!--                                        android:id="@+id/textView5"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:layout_gravity="center"-->
+<!--                                        android:layout_marginStart="16dp"-->
+<!--                                        android:gravity="center"-->
+<!--                                        android:text="About SOS button"-->
+<!--                                        android:textColor="#000000"-->
+<!--                                        android:textStyle="bold"-->
+<!--                                        app:layout_constraintBottom_toBottomOf="@+id/imageButton5"-->
+<!--                                        app:layout_constraintStart_toEndOf="@+id/imageButton5"-->
+<!--                                        app:layout_constraintTop_toTopOf="@+id/imageButton5" />-->
+
+<!--                                    <Space-->
+<!--                                        android:layout_width="0dp"-->
+<!--                                        android:layout_height="0dp"-->
+<!--                                        android:layout_weight="1" />-->
+
+<!--                                    <ImageView-->
+<!--                                        android:id="@+id/sosArrow"-->
+<!--                                        android:layout_width="@dimen/_54sdp"-->
+<!--                                        android:layout_height="@dimen/_54sdp"-->
+<!--                                        android:background="@null"-->
+<!--                                        android:contentDescription="default number"-->
+<!--                                        android:scaleType="fitCenter"-->
+<!--                                        android:src="@drawable/ic_to_bottom_foreground" />-->
+<!--                                </LinearLayout>-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:id="@+id/sosInfo"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginHorizontal="@dimen/_16sdp"-->
+<!--                                    android:layout_marginVertical="@dimen/_5sdp"-->
+<!--                                    android:background="@drawable/bg_info_text"-->
+<!--                                    android:padding="@dimen/_5sdp"-->
+<!--                                    android:visibility="gone"-->
+<!--                                    app:layout_constraintEnd_toEndOf="@+id/linearLayout"-->
+<!--                                    app:layout_constraintStart_toStartOf="@id/linearLayout"-->
+<!--                                    app:layout_constraintTop_toBottomOf="parent">-->
+
+<!--                                    <TextView-->
+<!--                                        android:layout_width="match_parent"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="You can trigger an sos call and SMS by just clicking the sos button that will send the current location and an alert message to your default emergency contact"-->
+<!--                                        android:textColor="@color/black" />-->
+<!--                                </LinearLayout>-->
+<!--                            </LinearLayout>-->
+<!--                        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--                    </com.google.android.material.card.MaterialCardView>-->
+<!--                    <Space-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="@dimen/_90sdp" />-->
+<!--                </LinearLayout>-->
+<!--            </ScrollView>-->
 
             <Space
                 android:layout_width="match_parent"

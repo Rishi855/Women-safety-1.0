@@ -5,4 +5,11 @@
     <color name="colorPrimary">#670BA8</color>
     <color name="colorPrimaryDark">#7821B6</color>
     <color name="colorAccent">#7821B6</color>
+
+    <color name="colorSecondPrimary">#00796b</color>
+    <color name="colorSecondPrimaryDark">#00695C</color>
+    <color name="colorSecondAccent">#FF4081</color>
+
+    <color name="color_bottom_sheet">#17041C</color>
+
 </resources>

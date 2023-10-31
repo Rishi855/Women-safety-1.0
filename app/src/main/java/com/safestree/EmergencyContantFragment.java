@@ -8,7 +8,10 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
@@ -61,6 +64,11 @@ public class EmergencyContantFragment extends Fragment {
         // Required empty public constructor
     }
 
+//    @Override
+//    public void onCreate(@Nullable Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//
+//    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -363,27 +371,51 @@ public class EmergencyContantFragment extends Fragment {
 
     private void pickContact() {
         Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_URI);
-        startActivityForResult(intent, PICK_CONTACT_REQUEST);
+//        startActivityForResult(intent, PICK_CONTACT_REQUEST);
+        startContactPickerActivity(intent,PICK_CONTACT_REQUEST);
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_CONTACT_REQUEST && resultCode == Activity.RESULT_OK) {
-            if (data != null) {
-                Uri contactUri = data.getData();
-                if (contactUri != null) {
-                    displayContactDetails(contactUri);
+    ActivityResultLauncher<Intent> activityResultLaunch = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    int resultCode = result.getResultCode();
+                    Intent data = result.getData();
+
+                    if (resultCode == Activity.RESULT_OK) {
+                        if (data != null) {
+                            Uri contactUri = data.getData();
+                            if (contactUri != null) {
+                                displayContactDetails(contactUri);
+                            }
+                        }
+                    }
                 }
-            }
-        }
+            });
+    private void startContactPickerActivity(Intent intent, int pickContactRequest) {
+//        Intent intent1 = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
+        activityResultLaunch.launch(intent);
     }
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (requestCode == PICK_CONTACT_REQUEST && resultCode == Activity.RESULT_OK) {
+//            if (data != null) {
+//                Uri contactUri = data.getData();
+//                if (contactUri != null) {
+//                    displayContactDetails(contactUri);
+//                }
+//            }
+//        }
+//    }
 
     private void displayContactDetails(Uri contactUri) {
         String[] projection = {
                 ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
                 ContactsContract.CommonDataKinds.Phone.NUMBER
         };
+//        Toast.makeText(getActivity(), projection[0]+" "+projection[1], Toast.LENGTH_SHORT).show();
 
         try (Cursor cursor = getActivity().getContentResolver().query(contactUri, projection, null, null, null)) {
             if (cursor != null && cursor.moveToFirst()) {

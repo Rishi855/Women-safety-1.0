@@ -32,21 +32,24 @@ import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.Priority;
 
 
 public class SosFragment extends Fragment {
 
-    boolean sosCall=false,sosMessage=false,shakeMessage=false;
+    boolean sosCall = false, sosMessage = false, shakeMessage = false;
 
-    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS=0;
-    private static final int MY_PERMISSIONS_REQUEST_AUTO_CALL=1;
-    private static final int MY_PERMISSIONS_REQUEST_LOCATION=2;
+    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 0;
+    private static final int MY_PERMISSIONS_REQUEST_AUTO_CALL = 1;
+    private static final int MY_PERMISSIONS_REQUEST_LOCATION = 2;
     public String lat = "";
     public String lon = "";
     FusedLocationProviderClient mFusedLocationClient;
+
     public SosFragment() {
         // Required empty public constructor
     }
+
     public String dial;
 
     @Override
@@ -59,28 +62,28 @@ public class SosFragment extends Fragment {
         SharedPreferences sh = getActivity().getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
 
         dial = sh.getString("emergencyContact", "");
-        sosCall = sh.getBoolean("sosCall",false);
-        sosMessage = sh.getBoolean("sosMessage",false);
-        shakeMessage = sh.getBoolean("shakeMessage",false);
-        if(sosCall)
-        {
+        sosCall = sh.getBoolean("sosCall", false);
+        sosMessage = sh.getBoolean("sosMessage", false);
+        shakeMessage = sh.getBoolean("shakeMessage", false);
+        if (sosCall) {
             int check_permission_call = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE);
-            if(check_permission_call == PackageManager.PERMISSION_GRANTED){
+            if (check_permission_call == PackageManager.PERMISSION_GRANTED) {
                 String dialCall = "tel:" + dial;
                 startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dialCall)));
                 Toast.makeText(getActivity(), "Call sent", Toast.LENGTH_SHORT).show();
-            }
-            else{FragmentManager fragmentManager = getParentFragmentManager();
+            } else {
+                Toast.makeText(getActivity(), "You must allow all permission.", Toast.LENGTH_SHORT).show();
+                FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.flFragment,new SettingFragment());
+                fragmentTransaction.replace(R.id.flFragment, new SettingFragment());
                 fragmentTransaction.commit();
+
             }
         }
 
-        if(sosMessage)
-        {
+        if (sosMessage) {
             int check_permission_location = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION);
-            if(check_permission_location == PackageManager.PERMISSION_GRANTED){
+            if (check_permission_location == PackageManager.PERMISSION_GRANTED) {
                 getLastLocation();
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
@@ -88,21 +91,24 @@ public class SosFragment extends Fragment {
                     public void run() {
                         SmsManager smsManager = SmsManager.getDefault();
                         SharedPreferences sh = getActivity().getSharedPreferences("MySharedPref", MODE_PRIVATE);
-                        String tempLat = sh.getString("lat","");
-                        String tempLon = sh.getString("lon","");
-                        if(tempLat.length()!=0)
-                        {
-                            smsManager.sendTextMessage(dial, null, "Your contact has made an emergency alert and last location was: "+"https://maps.google.com/?q="+tempLat+","+tempLon, null, null);
-                            Toast.makeText(getActivity(), "Message sent : "+lon+" "+lat, Toast.LENGTH_SHORT).show();
+                        String tempLat = sh.getString("lat", "");
+                        String tempLon = sh.getString("lon", "");
+                        if (tempLat.length() != 0) {
+                            smsManager.sendTextMessage(dial, null, "Your contact has made an emergency alert and last location was: " + "https://maps.google.com/?q=" + tempLat + "," + tempLon, null, null);
+                            Toast.makeText(getActivity(), "Message sent : " + lon + " " + lat, Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            Toast.makeText(getActivity(), "You must allow all permission.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }, 5000);
 
-            }
-            else{FragmentManager fragmentManager = getParentFragmentManager();
+            } else {
+                FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.flFragment,new SettingFragment());
+                fragmentTransaction.replace(R.id.flFragment, new SettingFragment());
                 fragmentTransaction.commit();
+                Toast.makeText(getActivity(), "You must allow all permission.", Toast.LENGTH_SHORT).show();
             }
         }
         return view;
@@ -114,19 +120,19 @@ public class SosFragment extends Fragment {
 
             if (isLocationEnabled()) {
 
-                if(mFusedLocationClient==null) return;
+                if (mFusedLocationClient == null) return;
 //                else Toast.makeText(getActivity(), "Not Empty location", Toast.LENGTH_SHORT).show();
                 mFusedLocationClient.getLastLocation().addOnCompleteListener(task -> {
                     Location location = task.getResult();
                     if (location == null) {
                         requestNewLocationData();
                     } else {
-                        lat = location.getLatitude()+"";
-                        lon = location.getLongitude()+"";
+                        lat = location.getLatitude() + "";
+                        lon = location.getLongitude() + "";
                         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MySharedPref", MODE_PRIVATE);
                         SharedPreferences.Editor myEdit = sharedPreferences.edit();
-                        myEdit.putString("lat",lat);
-                        myEdit.putString("lon",lon);
+                        myEdit.putString("lat", lat);
+                        myEdit.putString("lon", lon);
                         myEdit.apply();
 //                        Toast.makeText(getActivity(), ""+lat+" "+lon, Toast.LENGTH_SHORT).show();
 
@@ -138,19 +144,22 @@ public class SosFragment extends Fragment {
                 startActivity(intent);
             }
         } else {
-            requestPermissions();
+//            requestPermissions();
         }
     }
 
-    @SuppressLint("MissingPermission")
+    //    @SuppressLint("MissingPermission")
     private void requestNewLocationData() {
 
-        LocationRequest mLocationRequest = new LocationRequest();
-        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        mLocationRequest.setInterval(5);
-        mLocationRequest.setFastestInterval(0);
-        mLocationRequest.setNumUpdates(1);
+        LocationRequest mLocationRequest = new LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 100)
+                .setWaitForAccurateLocation(false)
+                .setMinUpdateIntervalMillis(2000)
+                .setMaxUpdateDelayMillis(100)
+                .build();
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
+        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
         mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.myLooper());
     }
 
@@ -171,11 +180,11 @@ public class SosFragment extends Fragment {
         // ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_BACKGROUND_LOCATION) == PackageManager.PERMISSION_GRANTED
     }
 
-    private void requestPermissions() {
-        ActivityCompat.requestPermissions(getActivity(), new String[]{
-                Manifest.permission.ACCESS_COARSE_LOCATION,
-                Manifest.permission.ACCESS_FINE_LOCATION}, MY_PERMISSIONS_REQUEST_LOCATION);
-    }
+//    private void requestPermissions() {
+//        ActivityCompat.requestPermissions(getActivity(), new String[]{
+//                Manifest.permission.ACCESS_COARSE_LOCATION,
+//                Manifest.permission.ACCESS_FINE_LOCATION}, MY_PERMISSIONS_REQUEST_LOCATION);
+//    }
 
     private boolean isLocationEnabled() {
         LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_margin="5dp"
+            android:paddingTop="5dp"
+            android:text="FOR CONNECTION BY CLOUD"
+            android:textAlignment="center"
+            android:textSize="@dimen/_13sdp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/parentSheet">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="I am parent"
+                    android:textSize="@dimen/_12ssp"/>
+                <!--            <CheckBox-->
+                <!--                android:id="@+id/psms"-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="match_parent"-->
+                <!--                android:text="Send Location" />-->
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_margin="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewToken"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="@dimen/_2sdp"
+                    android:fontFamily="serif"
+                    android:text="Child Token :"
+                    android:textSize="@dimen/_11sdp"/>
+
+                <EditText
+                    android:id="@+id/et_token"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="@dimen/_2sdp"
+                    android:background="@drawable/et_custom"
+                    android:fontFamily="serif"
+                    android:hint="Enter updated token"
+                    android:textSize="@dimen/_11sdp"
+                    android:textColor="@color/black"/>
+
+                <!--            <Spinner-->
+                <!--                android:id="@+id/levelSpinner"-->
+                <!--                android:layout_width="0dp"-->
+                <!--                android:layout_height="match_parent"-->
+                <!--                android:layout_weight="1" />-->
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnTrack"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/colorAccent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="Start parent service"
+                android:textSize="@dimen/_9ssp"/>
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="48dp"-->
+            <!--                android:layout_margin="20dp"-->
+            <!--                android:orientation="horizontal">-->
+
+            <!--                <Switch-->
+            <!--                    android:id="@+id/switchActive"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="match_parent"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:padding="10dp"-->
+            <!--                    android:text="Active Cloud Service"-->
+            <!--                    tools:ignore="UseSwitchCompatOrMaterialXml" />-->
+
+            <!--            </LinearLayout>-->
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/childSheet">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="I am child"
+                    android:textSize="@dimen/_12ssp"/>
+                <!--            <CheckBox-->
+                <!--                android:id="@+id/psms"-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="match_parent"-->
+                <!--                android:text="Send Location" />-->
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_margin="20dp"
+                android:orientation="horizontal">
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:text="I am parent"-->
+<!--                    android:textSize="@dimen/_12ssp"/>-->
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="@dimen/_2sdp"
+                    android:textSize="@dimen/_11ssp"
+                    android:text="Share your token"
+                    android:layout_gravity="center"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnShare"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:contentDescription="Shake setting"
+                    android:background="@drawable/ic_share_token_foreground"
+                    android:layout_gravity="center"/>
+                <!--            <Spinner-->
+                <!--                android:id="@+id/levelSpinner"-->
+                <!--                android:layout_width="0dp"-->
+                <!--                android:layout_height="match_parent"-->
+                <!--                android:layout_weight="1" />-->
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_margin="20dp"
+                android:orientation="horizontal">
+
+                <Switch
+                    android:id="@+id/switchActive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="@dimen/_2sdp"
+                    android:text="Active Cloud Service"
+                    android:textSize="@dimen/_11ssp"
+                    android:background="@android:color/transparent"
+                    tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnDone"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/colorAccent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="Start child service"
+                android:textSize="@dimen/_9ssp"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnStopService"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="Stop Service"
+            android:textSize="@dimen/_9ssp"/>
+
+    </LinearLayout>
+</FrameLayout>

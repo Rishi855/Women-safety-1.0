@@ -102,7 +102,6 @@ public class MyService extends Service {
     //    @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 //        String phone_Number = "9022739688";
-
 //        if (intent.getAction().equals("OnStopNotification")) {
 //            stopForeground(true);
 //            stopSelfResult(startId);
