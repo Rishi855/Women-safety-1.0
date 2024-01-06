@@ -117,5 +117,5 @@ SafeStree aims to contribute to women's safety by providing a reliable and techn
 
 ## Contributors
 - [Shahid Manjoor](https://github.com/therealshahidmanzoor)
-- [Amreen Momin](https://github.com/ayshanoorr)
+- [Amreen Momin](https://github.com/amreenmomin)
 - [Simran Tamboli](https://github.com/Simran)
