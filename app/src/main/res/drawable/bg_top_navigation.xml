@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background Color -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#6C6363" />
+            <corners
+                android:topLeftRadius="10dp"
+                android:topRightRadius="10dp" />
+        </shape>
+    </item>
+    <!-- Bottom Border (Underline) -->
+    <item android:top="-1dp" android:bottom="3dp">
+        <shape>
+<!--            <solid android:color="#e0e0e0" /> &lt;!&ndash; Color for the underline &ndash;&gt;-->
+            <solid android:color="#FFFFFF" /> <!-- Color for the underline -->
+        </shape>
+    </item>
+</layer-list>

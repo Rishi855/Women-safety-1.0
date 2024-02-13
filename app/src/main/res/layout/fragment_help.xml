@@ -29,7 +29,7 @@
                     android:layout_margin="@dimen/_11sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:padding="@dimen/_2sdp"
-                    android:src="@mipmap/ic_app_icon_1" />
+                    android:src="@mipmap/ic_app_icon_1"/>
 
                             <com.google.android.material.card.MaterialCardView
                                 android:layout_width="@dimen/_140sdp"
@@ -73,25 +73,41 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="@dimen/_25sdp"
                 android:orientation="horizontal">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="Community"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:textSize="@dimen/_7ssp"/>
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:paddingBottom="@dimen/_3sdp"
+                    android:id="@+id/textAppUse"
+                    android:layout_weight="1"
+                    android:text="App uses"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="@dimen/_12ssp"
+                    android:background="@drawable/bg_top_navigation"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="@dimen/_3sdp"
+                    android:id="@+id/textCommunity"
                     android:layout_weight="1"
                     android:text="Community"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:textSize="@dimen/_7ssp"/>
+                    android:textSize="@dimen/_12ssp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <FrameLayout
+                    android:id="@+id/flFragmentHelp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
             </LinearLayout>
 
 <!--            <ScrollView-->
