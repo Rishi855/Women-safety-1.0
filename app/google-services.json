@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "814168166320",
+    "project_id": "safestree-91010",
+    "storage_bucket": "safestree-91010.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:814168166320:android:2d09e29746e632d5639075",
+        "android_client_info": {
+          "package_name": "com.safestree"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "814168166320-697cor50reiqkd0cj3dot1oudiij7cep.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCATnLXaTXOpNTV8Cd9pTHG_nrCX0io-VM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "814168166320-697cor50reiqkd0cj3dot1oudiij7cep.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
