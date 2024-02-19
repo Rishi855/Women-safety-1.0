@@ -38,10 +38,21 @@ import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.messaging.FirebaseMessaging;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Objects;
 
 public class MyService extends Service {
+    private DatabaseReference mDatabase;
+    FirebaseAuth auth;
+    FirebaseUser authUser;
+
     private SensorManager mSensorManager;
     private int request_Code = 101;
     private float mAccel;
@@ -69,6 +80,10 @@ public class MyService extends Service {
     public void onCreate() {
 //        startForeground(9999, onStartCommand())
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(MyService.this);
+        FirebaseMessaging.getInstance().subscribeToTopic("notification");
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        auth = FirebaseAuth.getInstance();
+        authUser = auth.getCurrentUser();
     }
 
 
@@ -88,9 +103,38 @@ public class MyService extends Service {
                     SharedPreferences sh = MyService.this.getSharedPreferences("MySharedPref", MODE_PRIVATE);
                     String tempLat = sh.getString("lat","");
                     String tempLon = sh.getString("lon","");
+                    Location current = new Location("LocationA");
+                    current.setLatitude(Float.parseFloat(tempLat));
+                    current.setLongitude(Float.parseFloat(tempLon));
+
+                    float safeLatitude = sh.getFloat("safeLatitude",0);
+                    float safeLongitude = sh.getFloat("safeLongitude",0);
+                    float safeRadius = sh.getFloat("safeRadius",0);
+                    Location locationSafe = new Location("LocationB");
+                    locationSafe.setLatitude(safeLatitude);
+                    locationSafe.setLongitude(safeLongitude);
+
+                    if(safeLatitude!=0 && safeRadius!=0){
+                        double distance = locationSafe.distanceTo(current);
+                        if(distance<=safeRadius*1000)
+                        {
+                            Toast.makeText(getApplicationContext(), "Your are at safe location", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    }
+
                     if(tempLat.length()!=0)
                     {
                         smsManager.sendTextMessage(dial, null, "Your contact has made an emergency alert and last location was: "+"https://maps.google.com/?q="+tempLat+","+tempLon, null, null);
+                        try {
+                            Calendar c = Calendar.getInstance();
+                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                            String strDate = sdf.format(c.getTime());
+                            Toast.makeText(getApplicationContext(), ""+strDate, Toast.LENGTH_SHORT).show();
+                            mDatabase.child("users").child(authUser.getUid()).child("ShakeTriggered").child(strDate).setValue("lat:"+tempLat+" lon:"+tempLon);
+                        }catch (Exception e){
+                            Toast.makeText(getApplicationContext(), "Not updated", Toast.LENGTH_SHORT).show();
+                        }
                         Toast.makeText(MyService.this, "Message sent : "+lon+" "+lat, Toast.LENGTH_SHORT).show();
                     }
                 }

@@ -39,6 +39,8 @@ public class ChildService extends Service {
     FirebaseUser authUser;
     String childGmail="";
     static int trackCount=0;
+    String lat = "";
+    String lon = "";
     Handler handler;
 
     @Nullable

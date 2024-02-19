@@ -30,11 +30,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.messaging.FirebaseMessaging;
 import com.safestree.databinding.ActivityMainBinding;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -43,14 +38,7 @@ import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
 public class MainActivity extends AppCompatActivity {
-
-    private DatabaseReference mDatabase;
-    FirebaseAuth auth;
-    FirebaseUser authUser;
 
     boolean sosCall=false,sosMessage=false,shakeMessage=false;
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS=0;
@@ -81,11 +69,6 @@ public class MainActivity extends AppCompatActivity {
             throw e;
         }
         setContentView(binding.getRoot());
-
-        FirebaseMessaging.getInstance().subscribeToTopic("notification");
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        auth = FirebaseAuth.getInstance();
-        authUser = auth.getCurrentUser();
 
         replaceFragment(new SettingFragment());
         binding.bottomNavigationView.setBackground(null);
@@ -127,13 +110,6 @@ public class MainActivity extends AppCompatActivity {
                 float safeLongitude = sh.getFloat("safeLongitude",0);
                 float safeRadius = sh.getFloat("safeRadius",0);
 
-                Location locationSafe = new Location("LocationB");
-                locationSafe.setLatitude(safeLatitude);
-                locationSafe.setLongitude(safeLongitude);
-
-                String tempLat = "",tempLon="";
-                Location current = new Location("LocationA");
-
                 int check_permission_location = ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION);
                 if(check_permission_location == PackageManager.PERMISSION_GRANTED){
                     getLastLocation();
@@ -141,32 +117,16 @@ public class MainActivity extends AppCompatActivity {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            Log.d("temp", "run: done");
+                            String tempLat = sh.getString("lat","");
+                            String tempLon = sh.getString("lon","");
                         }
                     }, 5000);
-                    tempLat = sh.getString("lat","");
-                    tempLon = sh.getString("lon","");
-                    if(!tempLat.equals(""))
-                    {
-                        current.setLatitude(Float.parseFloat(tempLat));
-                        current.setLongitude(Float.parseFloat(tempLon));
-                    }
-                    else {
-                        return;
-                    }
+
                 }
                 else
                 {
                     Toast.makeText(MainActivity.this, "Please give location permission and turn on location", Toast.LENGTH_SHORT).show();
                     return;
-                }
-                if(safeLatitude!=0 && safeRadius!=0){
-                    double distance = locationSafe.distanceTo(current);
-                    if(distance<=safeRadius*1000)
-                    {
-                        Toast.makeText(MainActivity.this, "Your are at safe location", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
                 }
 
                 if(sosCall && !dial.equals(""))
@@ -182,17 +142,12 @@ public class MainActivity extends AppCompatActivity {
                 if(sosMessage && !dial.equals(""))
                 {
                     SmsManager smsManager = SmsManager.getDefault();
-                    smsManager.sendTextMessage(dial, null, "Your contact has made an emergency alert and last location was: "+"https://maps.google.com/?q="+tempLat+","+tempLon, null, null);
-                    try {
-                        Calendar c = Calendar.getInstance();
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                        String strDate = sdf.format(c.getTime());
-                        Toast.makeText(getApplicationContext(), ""+strDate, Toast.LENGTH_SHORT).show();
-                        mDatabase.child("users").child(authUser.getUid()).child("SosTriggered").child(strDate).setValue("lat:"+tempLat+" lon:"+tempLon);
-                    }catch (Exception e){
-                        Toast.makeText(getApplicationContext(), "Not updated", Toast.LENGTH_SHORT).show();
+                    if(tempLat.length()!=0)
+                    {
+                        smsManager.sendTextMessage(dial, null, "Your contact has made an emergency alert and last location was: "+"https://maps.google.com/?q="+tempLat+","+tempLon, null, null);
+                        Toast.makeText(MainActivity.this, "Message sent : "+lon+" "+lat, Toast.LENGTH_SHORT).show();
                     }
-                    Toast.makeText(MainActivity.this, "Message sent : "+lon+" "+lat, Toast.LENGTH_SHORT).show();
+
                 }
             }
         });
@@ -201,12 +156,6 @@ public class MainActivity extends AppCompatActivity {
     {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//        fragmentTransaction.setCustomAnimations(
-//                R.anim.slide_in_from_right,  // enter animation
-//                R.anim.slide_out_to_left,    // exit animation
-//                R.anim.slide_in_from_left,   // pop enter animation
-//                R.anim.slide_out_to_right    // pop exit animation
-//        );
         fragmentTransaction.replace(R.id.flFragment,fragment);
         fragmentTransaction.commit();
     }

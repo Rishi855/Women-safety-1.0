@@ -1,5 +1,6 @@
 package com.safestree;
 
+import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -27,6 +28,9 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.view.animation.AnticipateInterpolator;
+import android.view.animation.BounceInterpolator;
+import android.view.animation.OvershootInterpolator;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -109,34 +113,191 @@ public class EmergencyContantFragment extends Fragment {
 
         Dialog dialog = new Dialog(getActivity());
 
+//        addNewContact.setVisibility(View.INVISIBLE);
+//        addNewDelete.setVisibility(View.INVISIBLE);
+//
+//        ValueAnimator pulseAnimator = ValueAnimator.ofFloat(1f, 1.2f, 1f);
+//        pulseAnimator.setRepeatCount(ValueAnimator.INFINITE);
+//        pulseAnimator.setRepeatMode(ValueAnimator.RESTART);
+//        pulseAnimator.setDuration(1000);
+//
+//        pulseAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+//            @Override
+//            public void onAnimationUpdate(ValueAnimator animation) {
+//                float animatedValue = (float) animation.getAnimatedValue();
+//                action.setScaleX(animatedValue);
+//                action.setScaleY(animatedValue);
+//            }
+//        });
+//
+//        action.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (!allVisible) {
+//                    // Fade in animation for addNewContact button
+//                    addNewContact.setVisibility(View.VISIBLE);
+//                    addNewContact.setAlpha(0f);
+//                    addNewContact.animate()
+//                            .translationY(0)
+//                            .alpha(1f)
+//                            .setDuration(500)
+//                            .setInterpolator(new OvershootInterpolator())
+//                            .start();
+//
+//                    // Fade in animation for addNewDelete button
+//                    addNewDelete.setVisibility(View.VISIBLE);
+//                    addNewDelete.setAlpha(0f);
+//                    addNewDelete.animate()
+//                            .translationY(0)
+//                            .alpha(1f)
+//                            .setDuration(500)
+//                            .setInterpolator(new OvershootInterpolator())
+//                            .start();
+//
+//                    // Start pulsating animation for the action button
+//                    pulseAnimator.start();
+//
+//                    allVisible = true;
+//                } else {
+//                    // Fade out animation for addNewContact button
+//                    addNewContact.animate()
+//                            .translationY(100)
+//                            .alpha(0f)
+//                            .setDuration(500)
+//                            .withEndAction(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    addNewContact.setVisibility(View.GONE);
+//                                }
+//                            })
+//                            .setInterpolator(new AnticipateInterpolator())
+//                            .start();
+//
+//                    // Fade out animation for addNewDelete button
+//                    addNewDelete.animate()
+//                            .translationY(200)
+//                            .alpha(0f)
+//                            .setDuration(500)
+//                            .withEndAction(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    addNewDelete.setVisibility(View.GONE);
+//                                }
+//                            })
+//                            .setInterpolator(new AnticipateInterpolator())
+//                            .start();
+//
+//                    // Stop pulsating animation for the action button
+//                    pulseAnimator.cancel();
+//
+//                    allVisible = false;
+//                }
+//            }
+//        });
+
+// ANIMATION OLD 1       addNewContact.setVisibility(View.INVISIBLE);
+//        addNewDelete.setVisibility(View.INVISIBLE);
+//
+//        action.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (!allVisible) {
+//                    // Extend animation
+//                    action.animate().rotation(45).setDuration(300).start();
+//
+//                    // Show the buttons with translation animation
+//                    addNewContact.setVisibility(View.VISIBLE);
+//                    addNewContact.setTranslationY(100); // Adjust the translation distance
+//                    addNewContact.animate().translationY(0).setDuration(300).start();
+//
+//                    addNewDelete.setVisibility(View.VISIBLE);
+//                    addNewDelete.setTranslationY(200); // Adjust the translation distance
+//                    addNewDelete.animate().translationY(0).setDuration(300).start();
+//
+//                    allVisible = true;
+//                } else {
+//                    // Shrink animation
+//                    action.animate().rotation(0).setDuration(300).start();
+//
+//                    // Hide the buttons with translation animation
+//                    addNewContact.animate().translationY(100).setDuration(300).withEndAction(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            addNewContact.setVisibility(View.GONE);
+//                        }
+//                    }).start();
+//
+//                    addNewDelete.animate().translationY(200).setDuration(300).withEndAction(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            addNewDelete.setVisibility(View.GONE);
+//                        }
+//                    }).start();
+//
+//                    allVisible = false;
+//                }
+//            }
+//        });
+
+// Animation OLD 2
+        addNewContact.setVisibility(View.INVISIBLE);
+        addNewDelete.setVisibility(View.INVISIBLE);
+
         action.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!allVisible)
-                {
-                    addNewContact.show();
-                    addNewDelete.show();
+                if (!allVisible) {
+                    // Extend and fade in animation
+                    action.animate().rotation(45).setDuration(300).start();
 
-                    addContactText.setVisibility(View.VISIBLE);
-                    deleteContactText.setVisibility(View.VISIBLE);
-                    actionText.setVisibility(View.VISIBLE);
-                    action.extend();
-                    allVisible=true;
-                }
-                else
-                {
-                    addContactText.setVisibility(View.GONE);
-                    deleteContactText.setVisibility(View.GONE);
-                    actionText.setVisibility(View.GONE);
+                    addNewContact.setVisibility(View.VISIBLE);
+                    addNewContact.setAlpha(0f);
+                    addNewContact.animate()
+                            .translationY(0)
+                            .alpha(1f)
+                            .setDuration(300)
+                            .start();
 
-                    addNewContact.setVisibility(View.GONE);
-                    addNewDelete.setVisibility(View.GONE);
-                    allVisible=false;
-                    action.shrink();
-                    allVisible=false;
+                    addNewDelete.setVisibility(View.VISIBLE);
+                    addNewDelete.setAlpha(0f);
+                    addNewDelete.animate()
+                            .translationY(0)
+                            .alpha(1f)
+                            .setDuration(300)
+                            .start();
+
+                    allVisible = true;
+                } else {
+                    // Shrink and fade out animation
+                    action.animate().rotation(0).setDuration(300).start();
+
+                    addNewContact.animate()
+                            .translationY(100)
+                            .alpha(0f)
+                            .setDuration(300)
+                            .withEndAction(new Runnable() {
+                                @Override
+                                public void run() {
+                                    addNewContact.setVisibility(View.GONE);
+                                }
+                            }).start();
+
+                    addNewDelete.animate()
+                            .translationY(200)
+                            .alpha(0f)
+                            .setDuration(300)
+                            .withEndAction(new Runnable() {
+                                @Override
+                                public void run() {
+                                    addNewDelete.setVisibility(View.GONE);
+                                }
+                            }).start();
+
+                    allVisible = false;
                 }
             }
         });
+
         addNewContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

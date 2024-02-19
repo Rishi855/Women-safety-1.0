@@ -33,9 +33,22 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.Priority;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.messaging.FirebaseMessaging;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class SosFragment extends Fragment {
+
+    private DatabaseReference mDatabase;
+    FirebaseAuth auth;
+    FirebaseUser authUser;
 
     boolean sosCall = false, sosMessage = false, shakeMessage = false;
 
@@ -58,6 +71,10 @@ public class SosFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_sos, container, false);
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
+        FirebaseMessaging.getInstance().subscribeToTopic("notification");
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        auth = FirebaseAuth.getInstance();
+        authUser = auth.getCurrentUser();
 
         SharedPreferences sh = getActivity().getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
 
@@ -93,9 +110,19 @@ public class SosFragment extends Fragment {
                         SharedPreferences sh = getActivity().getSharedPreferences("MySharedPref", MODE_PRIVATE);
                         String tempLat = sh.getString("lat", "");
                         String tempLon = sh.getString("lon", "");
+//                        Toast.makeText(getActivity(), "Calling", Toast.LENGTH_SHORT).show();
                         if (tempLat.length() != 0) {
                             smsManager.sendTextMessage(dial, null, "Your contact has made an emergency alert and last location was: " + "https://maps.google.com/?q=" + tempLat + "," + tempLon, null, null);
-                            Toast.makeText(getActivity(), "Message sent : " + lon + " " + lat, Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(getActivity(), "Message sent : " + lon + " " + lat, Toast.LENGTH_SHORT).show();
+                            try {
+                                Calendar c = Calendar.getInstance();
+                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                                String strDate = sdf.format(c.getTime());
+                                Toast.makeText(getActivity(), ""+strDate, Toast.LENGTH_SHORT).show();
+                                mDatabase.child("users").child(authUser.getUid()).child("SosTriggered").child(strDate).setValue("lat:"+lat+" lon:"+lon);
+                            }catch (Exception e){
+                                Toast.makeText(getActivity(), "Not updated", Toast.LENGTH_SHORT).show();
+                            }
                         }
                         else {
                             Toast.makeText(getActivity(), "You must allow all permission.", Toast.LENGTH_SHORT).show();

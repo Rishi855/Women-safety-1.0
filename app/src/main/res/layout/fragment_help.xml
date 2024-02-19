@@ -87,7 +87,8 @@
                     android:gravity="center"
                     android:textSize="@dimen/_12ssp"
                     android:background="@drawable/bg_top_navigation"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -95,6 +96,8 @@
                     android:paddingBottom="@dimen/_3sdp"
                     android:id="@+id/textCommunity"
                     android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
                     android:text="Community"
                     android:layout_gravity="center"
                     android:gravity="center"

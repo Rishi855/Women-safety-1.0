@@ -1,0 +1,44 @@
+<!-- res/layout/custom_alert_dialog.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_bottom_sheet">
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"/>
+
+    <TextView
+        android:id="@+id/messageTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"/>
+
+    <Button
+        android:id="@+id/yesButton"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="Yes"
+        android:stateListAnimator="@anim/alert_dialog_anim"/>
+
+    <Button
+        android:id="@+id/laterButton"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="Do it later"
+        android:stateListAnimator="@anim/alert_dialog_anim"/>
+</LinearLayout>

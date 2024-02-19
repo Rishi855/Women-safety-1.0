@@ -69,8 +69,8 @@ public class UpdateCountService extends Service {
     //    EditText number;
 //    private String number;
     private float mAccelCurrent;
-    public String lat = "";
-    public String lon = "";
+//    public String lat = "";
+//    public String lon = "";
     public String dial = "";
     private static final int MY_PERMISSIONS_REQUEST_LOCATION=2;
     FusedLocationProviderClient mFusedLocationClient;
@@ -103,8 +103,6 @@ public class UpdateCountService extends Service {
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(UpdateCountService.this);
 
     }
-
-
     //    @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         final String CHANNELID = "foreground service id";

@@ -11,32 +11,40 @@
         android:layout_height="350dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:background="@color/white"
         android:layout_marginTop="20dp"
         app:cardElevation="10dp">
         <ImageView
             android:layout_width="match_parent"
+            android:background="@color/white"
             android:layout_height="match_parent"
             android:id="@+id/recycleImage"
             android:scaleType="centerCrop"/>
+
     </androidx.cardview.widget.CardView>
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:id="@+id/title"-->
+<!--        android:textSize="@dimen/_15ssp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textColor="#000000" -->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginTop="3dp"-->
+<!--        android:text="here"/>-->
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/title"
-        android:textSize="@dimen/_15ssp"
-        android:textStyle="bold"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="3dp"
-        android:text="here"/>
-    <TextView
+        android:id="@+id/recycleCaption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/recycleCaption"
-        android:textSize="@dimen/_11sdp"
-        android:layout_marginEnd="20dp"
-        android:gravity="left"
         android:layout_marginStart="20dp"
         android:layout_marginTop="3dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
-        android:text="here"/>
+        android:fontFamily="monospace"
+        android:gravity="left"
+        android:text="here there i am using community"
+        android:textColor="#000000"
+        android:textSize="@dimen/_11sdp"
+        android:textStyle="bold" />
 </LinearLayout>

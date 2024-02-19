@@ -19,5 +19,6 @@
     <string name="register">Register</string>
     <string name="re_type_password">Re-type Password</string>
     <string name="your_name">Full Name</string>
+    <string name="geoInfo">When the user sets a safe location by clicking the geo-location button and specifies the minimum safe distance in kilometers, it is marked as a secure zone. If the user stays within this safe zone, the application refrains from sending any SMS alerts. However, as soon as the user moves beyond the specified safe location, the SOS button can be triggered. This action will automatically send the current location and an alert message to the predefined emergency contact, ensuring prompt assistance in case of any distress.</string>
 
 </resources>
