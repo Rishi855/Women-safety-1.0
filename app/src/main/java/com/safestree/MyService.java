@@ -88,6 +88,26 @@ public class MyService extends Service {
                     SharedPreferences sh = MyService.this.getSharedPreferences("MySharedPref", MODE_PRIVATE);
                     String tempLat = sh.getString("lat","");
                     String tempLon = sh.getString("lon","");
+                    Location current = new Location("LocationA");
+                    current.setLatitude(Float.parseFloat(tempLat));
+                    current.setLongitude(Float.parseFloat(tempLon));
+
+                    float safeLatitude = sh.getFloat("safeLatitude",0);
+                    float safeLongitude = sh.getFloat("safeLongitude",0);
+                    float safeRadius = sh.getFloat("safeRadius",0);
+                    Location locationSafe = new Location("LocationB");
+                    locationSafe.setLatitude(safeLatitude);
+                    locationSafe.setLongitude(safeLongitude);
+
+                    if(safeLatitude!=0 && safeRadius!=0){
+                        double distance = locationSafe.distanceTo(current);
+                        if(distance<=safeRadius*1000)
+                        {
+                            Toast.makeText(getApplicationContext(), "Your are at safe location", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    }
+
                     if(tempLat.length()!=0)
                     {
                         smsManager.sendTextMessage(dial, null, "Your contact has made an emergency alert and last location was: "+"https://maps.google.com/?q="+tempLat+","+tempLon, null, null);

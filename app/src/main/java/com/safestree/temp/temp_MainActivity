@@ -110,13 +110,6 @@ public class MainActivity extends AppCompatActivity {
                 float safeLongitude = sh.getFloat("safeLongitude",0);
                 float safeRadius = sh.getFloat("safeRadius",0);
 
-                Location locationSafe = new Location("LocationB");
-                locationSafe.setLatitude(safeLatitude);
-                locationSafe.setLongitude(safeLongitude);
-
-                String tempLat = "",tempLon="";
-                Location current = new Location("LocationA");
-
                 int check_permission_location = ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION);
                 if(check_permission_location == PackageManager.PERMISSION_GRANTED){
                     getLastLocation();
@@ -124,32 +117,16 @@ public class MainActivity extends AppCompatActivity {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            Log.d("temp", "run: done");
+                            String tempLat = sh.getString("lat","");
+                            String tempLon = sh.getString("lon","");
                         }
                     }, 5000);
-                    tempLat = sh.getString("lat","");
-                    tempLon = sh.getString("lon","");
-                    if(!tempLat.equals(""))
-                    {
-                        current.setLatitude(Float.parseFloat(tempLat));
-                        current.setLongitude(Float.parseFloat(tempLon));
-                    }
-                    else {
-                        return;
-                    }
+
                 }
                 else
                 {
                     Toast.makeText(MainActivity.this, "Please give location permission and turn on location", Toast.LENGTH_SHORT).show();
                     return;
-                }
-                if(safeLatitude!=0 && safeRadius!=0){
-                    double distance = locationSafe.distanceTo(current);
-                    if(distance<=safeRadius*1000)
-                    {
-                        Toast.makeText(MainActivity.this, "Your are at safe location", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
                 }
 
                 if(sosCall && !dial.equals(""))
@@ -165,8 +142,12 @@ public class MainActivity extends AppCompatActivity {
                 if(sosMessage && !dial.equals(""))
                 {
                     SmsManager smsManager = SmsManager.getDefault();
-                    smsManager.sendTextMessage(dial, null, "Your contact has made an emergency alert and last location was: "+"https://maps.google.com/?q="+tempLat+","+tempLon, null, null);
-                    Toast.makeText(MainActivity.this, "Message sent : "+lon+" "+lat, Toast.LENGTH_SHORT).show();
+                    if(tempLat.length()!=0)
+                    {
+                        smsManager.sendTextMessage(dial, null, "Your contact has made an emergency alert and last location was: "+"https://maps.google.com/?q="+tempLat+","+tempLon, null, null);
+                        Toast.makeText(MainActivity.this, "Message sent : "+lon+" "+lat, Toast.LENGTH_SHORT).show();
+                    }
+
                 }
             }
         });

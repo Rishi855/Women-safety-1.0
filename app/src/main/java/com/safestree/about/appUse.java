@@ -16,12 +16,11 @@ import com.safestree.R;
 
 public class appUse extends Fragment {
 
+    Boolean booleanDefaultInfo,booleanSosInfo,booleanShakeInfo,booleanPolice,booleanHospital,booleanGeoInfo;
+    ImageView imageViewDefault,imageViewSos,imageViewShake,imageViewPolice,imageViewHospital,imageViewGeo;
 
-    Boolean booleanDefaultInfo,booleanSosInfo,booleanShakeInfo,booleanPolice,booleanHospital;
-    ImageView imageViewDefault,imageViewSos,imageViewShake,imageViewPolice,imageViewHospital;
-
-    MaterialCardView defaultCardView,sosCardView,shakeCardView,policeCardView,hospitalCardView;
-    LinearLayout defaultInfo,sosInfo,shakeInfo,policeInfo,hospitalInfo;
+    MaterialCardView defaultCardView,sosCardView,shakeCardView,policeCardView,hospitalCardView,geoCardView;
+    LinearLayout defaultInfo,sosInfo,shakeInfo,policeInfo,hospitalInfo,geoInfo;
 
     public appUse() {
         // Required empty public constructor
@@ -129,6 +128,26 @@ public class appUse extends Fragment {
                     sosInfo.setVisibility(View.VISIBLE);
                     imageViewSos.setImageResource(R.drawable.ic_to_up_foreground);
                     booleanSosInfo=true;
+                }
+            }
+        });
+
+        geoCardView = view.findViewById(R.id.geoCardView);
+        geoInfo = view.findViewById(R.id.geoInfo);
+        imageViewGeo = view.findViewById(R.id.geoArrow);
+        booleanGeoInfo = false;
+        geoCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(booleanGeoInfo) {
+                    geoInfo.setVisibility(View.GONE);
+                    booleanGeoInfo=false;
+                    imageViewGeo.setImageResource(R.drawable.ic_to_bottom_foreground);
+                }
+                else {
+                    geoInfo.setVisibility(View.VISIBLE);
+                    imageViewGeo.setImageResource(R.drawable.ic_to_up_foreground);
+                    booleanGeoInfo=true;
                 }
             }
         });
