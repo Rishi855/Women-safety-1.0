@@ -116,6 +116,6 @@ SafeStree aims to contribute to women's safety by providing a reliable and techn
 3. [International Journal of Research in Advent Technology](https://www.ijraset.com/research-paper/woman-safety-android-application)
 
 ## Contributors
-- [Shahid Manjoor](https://github.com/therealshahidmanzoor)
-- [Amreen Momin](https://github.com/amreenmomin)
-- [Simran Tamboli](https://github.com/Simran)
+- [Shahid Manzoor](https://github.com/therealshahidmanzoor)
+- [Amreenbano Momin](https://github.com/amreenmomin)
+- [Simran Tamboli](https://github.com/Simran2305)
