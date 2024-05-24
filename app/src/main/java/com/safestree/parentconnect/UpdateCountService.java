@@ -182,11 +182,8 @@ public class UpdateCountService extends Service {
                     @Override
                     public void onComplete(@NonNull Task<String> task) {
                         if (!task.isSuccessful()) {
-//                                Log.w(TAG, "Fetching FCM registration token failed", task.getException());
                             return;
                         }
-//                                        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
-//                                        String currentTime = sdf.format(new Date());
                         locationTrack.addStatus(count++);
                         mDatabase.child("users").child(authUser.getUid()).child("locationDetails").setValue(locationTrack);
                         Toast.makeText(UpdateCountService.this, "One more added", Toast.LENGTH_SHORT).show();
@@ -263,8 +260,6 @@ public class UpdateCountService extends Service {
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
     }
-
-
     @Override
     public void onDestroy() {
         super.onDestroy();

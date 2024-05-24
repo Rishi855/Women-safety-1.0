@@ -21,7 +21,6 @@ import androidx.core.app.NotificationCompat;
 public class BluetoothMonitorService extends Service {
     private BluetoothAdapter bluetoothAdapter;
     private BroadcastReceiver mReceiver;
-
     private static final String NOTIFICATION_CHANNEL_ID = "MyBluetoothChannel";
 
     // Notification ID (can be any unique number)
@@ -31,7 +30,6 @@ public class BluetoothMonitorService extends Service {
     public void onCreate() {
         super.onCreate();
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-
         // Register the Bluetooth broadcast receiver
         mReceiver = new BroadcastReceiver() {
             @Override

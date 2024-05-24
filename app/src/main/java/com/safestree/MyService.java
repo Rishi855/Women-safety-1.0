@@ -53,6 +53,8 @@ public class MyService extends Service {
     FirebaseAuth auth;
     FirebaseUser authUser;
 
+    private static final float FREEFALL_THRESHOLD = 1.0f;
+
     private SensorManager mSensorManager;
     private int request_Code = 101;
     private float mAccel;
@@ -84,10 +86,11 @@ public class MyService extends Service {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         auth = FirebaseAuth.getInstance();
         authUser = auth.getCurrentUser();
+
     }
 
 
-    protected void sendSMSMessage() {
+    protected void sendSMSMessage(int state) {
 
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.SEND_SMS)
@@ -125,7 +128,14 @@ public class MyService extends Service {
 
                     if(tempLat.length()!=0)
                     {
-                        smsManager.sendTextMessage(dial, null, "Your contact has made an emergency alert and last location was: "+"https://maps.google.com/?q="+tempLat+","+tempLon, null, null);
+                        String sms = "";
+                        if(state==1){
+                            sms = "Your contact has made an Emergency Alert and last location was: ";
+                        }
+                        else{
+                            sms = "Your contact phone is in Free Fall and last location was: ";
+                        }
+                        smsManager.sendTextMessage(dial, null, sms+"https://maps.google.com/?q="+tempLat+","+tempLon, null, null);
                         try {
                             Calendar c = Calendar.getInstance();
                             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -188,26 +198,31 @@ public class MyService extends Service {
         mSensorListener = new SensorEventListener() {
             @Override
             public void onSensorChanged(SensorEvent event) {
-//                Toast.makeText(MyService.this, "abs" , Toast.LENGTH_SHORT).show();
                 float x = event.values[0];
                 float y = event.values[1];
                 float z = event.values[2];
-                mAccelLast = mAccelCurrent;
-                mAccelCurrent = (float) Math.sqrt((double) (x * x + y * y + z * z));
-                float delta = mAccelCurrent - mAccelLast;
-                mAccel = mAccel * 0.9f + delta;
-                Log.d(TAG, "onSensorChanged: " + mAccel);
-//                Toast.makeText(MyService.this, "mAccel"+mAccel, Toast.LENGTH_SHORT).show();
-                int temp = addLevel + 20;
 
-                if (mAccel > temp) {
-                    Toast.makeText(getApplicationContext(), "Shake event detected by services" + " and " + temp, Toast.LENGTH_SHORT).show();
-//                    Toast.makeText(MyService.this, "Message sent by service" + mAccel, Toast.LENGTH_SHORT).show();
-                    sendSMSMessage();
 
-//                    makePhoneCall();
-//                }
+                float acceleration = Math.abs(x) + Math.abs(y) + Math.abs(z);
 
+                float pitch = y;
+
+                if (acceleration < FREEFALL_THRESHOLD && Math.abs(pitch) < 1.0f) {
+                    Toast.makeText(getApplicationContext(), "FreeFall Detected", Toast.LENGTH_SHORT).show();
+                    sendSMSMessage(0);
+                }
+                else {
+                    mAccelLast = mAccelCurrent;
+                    mAccelCurrent = (float) Math.sqrt((double) (x * x + y * y + z * z));
+                    float delta = mAccelCurrent - mAccelLast;
+                    mAccel = mAccel * 0.9f + delta;
+                    Log.d(TAG, "onSensorChanged: " + mAccel);
+                    int temp = addLevel + 20;
+
+                    if (mAccel > temp) {
+                        Toast.makeText(getApplicationContext(), "Shake event detected by services" + " and " + temp, Toast.LENGTH_SHORT).show();
+                        sendSMSMessage(1);
+                    }
                 }
             }
 
@@ -221,12 +236,8 @@ public class MyService extends Service {
         mAccel = 10f;
         mAccelCurrent = SensorManager.GRAVITY_EARTH;
         mAccelLast = SensorManager.GRAVITY_EARTH;
-//        Toast.makeText(this, "e", Toast.LENGTH_SHORT).show();
         final String CHANNELID = "foreground service id";
-
         Intent stopSelf = new Intent(this, MainActivity.class);
-//        stopSelf.putExtra("Stop",true);
-//        stopSelf.setAction("OnStopNotification");
         stopSelf.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(MyService.this, 1, intent, PendingIntent.FLAG_ONE_SHOT | PendingIntent.FLAG_MUTABLE);
 
@@ -275,9 +286,7 @@ public class MyService extends Service {
     @SuppressLint("MissingPermission")
     private void getLastLocation() {
         if (checkPermissions()) {
-
             if (isLocationEnabled()) {
-
                 if(mFusedLocationClient==null) return;
 //                else Toast.makeText(getActivity(), "Not Empty location", Toast.LENGTH_SHORT).show();
                 mFusedLocationClient.getLastLocation().addOnCompleteListener(task -> {
@@ -293,7 +302,6 @@ public class MyService extends Service {
                         myEdit.putString("lon",lon);
                         myEdit.apply();
 //                        Toast.makeText(getActivity(), ""+lat+" "+lon, Toast.LENGTH_SHORT).show();
-
                     }
                 });
             } else {
@@ -308,8 +316,6 @@ public class MyService extends Service {
 
     @SuppressLint("MissingPermission")
     private void requestNewLocationData() {
-
-//        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(MyService.this);
         LocationRequest mLocationRequest = new LocationRequest();
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         mLocationRequest.setInterval(5);
